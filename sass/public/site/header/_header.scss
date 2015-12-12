@@ -5,6 +5,12 @@
 	width: 100%;
 }
 
+.loungeact-header-inside-banner .lougeact-header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
 .lougeact-header {
 	z-index: 9999;
 
@@ -45,9 +51,7 @@
 		
 		.site-title {
 			margin: 0;
-			font-size: 36px;
-			font-weight: 500;
-			line-height: 1.1;
+			font-weight: bold;
 			
 			a:hover,
 			a:focus {

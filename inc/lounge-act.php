@@ -27,13 +27,14 @@ class Lounge_Act_Theme {
 			'header_template' => 'default.php',
 			'header_background_color' => '#ffffff',
 			'header_background_opacity' => '1',
+			'header_background_opacity_on_scroll' => '1',
 			"header_fixed_top" => "",
 			'site_title_color' => '#337ab7',
 			'blogdescription_color' => '#777777',
 			'slider' => '',
 			'slider_height' => '400px',
-			'slider_fullscreen' => false,
 			'slide_overlay_opacity' => '0',
+			'slider_layout' => '',
 			'font_family_title' => 'Poiret One:regular',
 			'font_family_default' => 'Open Sans:regular',
 			'font_family_h1' => 'Open Sans:regular',
@@ -155,11 +156,21 @@ class Lounge_Act_Theme {
 		
 		// HEADER
 		// Simulate header height when fixed-top
-		if ($this->get_setting ( "header_fixed_top" ) && !$this->get_setting ( "slider_fullscreen" )) {
-			$result .= $this->generate_css ( ".lougeact-wrapper.loungeact-header-fixed-top", "padding-top", "header_margin_bottom", '', '', false );
-		}
+		//if ($this->get_setting ( "header_fixed_top" ) && !$this->get_setting ( "slider_fullscreen" )) {
+			//$result .= $this->generate_css ( ".lougeact-wrapper.loungeact-header-fixed-top", "padding-top", "header_margin_bottom", '', '', false );
+		//}
+		
+		
 		// logo
 		$result .= $this->generate_css ( ".lougeact-header .site-logo", "max-height", "logo_max_height", '', '', false );
+		
+		//SLIDER
+		$result .= $this->generate_css ( ".loungeact-banner", "height", "slider_height", '', '', false );
+		$result .= $this->generate_css ( ".loungeact-banner .loungeact-slider-overlay", "background-color", "slide_overlay_opacity", 'rgba(0 , 0 , 0, ', ')', false );
+		
+		//if ($this->get_setting ( "slider_header_inside" )) {
+			//$result .= '.lougeact-header {position: absolute;}';
+		//}
 		
 		if ((is_front_page () && is_home () && $this->get_setting ( "hide_title_in_homepage" ))) {
 			$result .= '.site-title {position: absolute;clip: rect(1px, 1px, 1px, 1px);}';
@@ -174,13 +185,19 @@ class Lounge_Act_Theme {
 			$result .= ".lougeact-header .navbar-default { background-color: transparent;}";
 		}
 		
+		if ($this->get_setting ( "header_background_opacity_on_scroll" )) {
+			$result .= ".lougeact-scrolling .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity_on_scroll" ) ) ) . ");}\n";
+		} else {
+			$result .= ".lougeact-scrolling .lougeact-header .navbar-default { background-color: transparent;}";
+		}
+		
 		// Main Menu
 		$result .= $this->generate_css ( ".navbar-default .loungeact-navbar .navbar-nav > li > a", "color", "menu_font_color", '', '', false );
 		$result .= $this->generate_css ( ".navbar-default .loungeact-navbar .navbar-nav > li > a:hover", "color", "menu_font_color_hover", '', '', false );
 		
-		// Slider
-		$result .= $this->generate_css ( ".loungeact-banner", "height", "slider_height", '', '', false );
-		$result .= $this->generate_css ( ".loungeact-banner .loungeact-slider-overlay", "background-color", "slide_overlay_opacity", 'rgba(0 , 0 , 0, ', ')', false );
+		
+		
+		
 		
 		$result .= $this->generate_css ( ".site-title a", "color", "site_title_color", '', '', false );
 		$result .= $this->generate_css ( ".site-description", "color", "blogdescription_color", '', '', false );
@@ -273,14 +290,17 @@ class Lounge_Act_Theme {
 	 */
 	public function get_page_class() {
 		$classes = array (
-				$this->get_setting ( 'container_class' ) 
+				$this->get_setting ( 'container_class' )
 		);
 		if ($this->get_setting ( 'header_fixed_top' ) != '') {
 			$classes [] = 'loungeact-header-fixed-top';
 		}
-		if ($this->get_setting ( 'slider_fullscreen' )) {
-			$classes [] = 'loungeact-fullscreen-banner';
+		// If a slider is selected, add class layout
+		if ($this->get_setting ( "slider" ) != '' ) {
+			$classes [] = $this->get_setting ( 'slider_layout' );
 		}
+		
+		
 		return implode ( " ", $classes );
 	}
 }

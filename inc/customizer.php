@@ -34,9 +34,9 @@ function loungeact_customize_register($wp_customize) {
 	// container_class
 	$wp_customize->add_setting ( 'loungeact[container_class]', array (
 			'default' => $loungeact->get_setting ( 'container_class' ),
-			'type' => 'option',
-			
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( 'loungeact_container_class', array (
 			'label' => esc_html__ ( 'Container', 'loungeact' ),
 			'section' => 'loungeact_layout',
@@ -77,9 +77,9 @@ function loungeact_customize_register($wp_customize) {
 	) ) );
 	$wp_customize->add_setting ( 'loungeact[gridsystem_class]', array (
 			'default' => $loungeact->get_setting ( 'gridsystem_class' ),
-			'type' => 'option',
-			
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( 'loungeact_gridsystem_class', array (
 			'label' => esc_html__ ( 'Columns not collapse in', 'loungeact' ),
 			'section' => 'loungeact_layout',
@@ -110,9 +110,9 @@ function loungeact_customize_register($wp_customize) {
 	// Header fixed top
 	$wp_customize->add_setting ( 'loungeact[header_fixed_top]', array (
 			'default' => $loungeact->get_setting ( 'header_fixed_top' ),
-			'type' => 'option',
-			
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( 'loungeact_header_fixed_top', array (
 			'label' => esc_html__ ( 'Position', 'loungeact' ),
 			'section' => 'loungeact_header_options',
@@ -127,17 +127,16 @@ function loungeact_customize_register($wp_customize) {
 	// Header templates
 	$wp_customize->add_setting ( 'loungeact[header_template]', array (
 			'default' => $loungeact->get_setting ( 'header_template' ),
-			'type' => 'option'
+			'type' => 'option' 
 	) );
 	$wp_customize->add_control ( 'loungeact_header_template', array (
 			'label' => esc_html__ ( 'Template', 'loungeact' ),
 			'section' => 'loungeact_header_options',
 			'settings' => 'loungeact[header_template]',
 			'type' => 'select',
-			'choices' => loungeact_admin_header_template_list(),
-			'priority' => 30
+			'choices' => loungeact_admin_header_template_list (),
+			'priority' => 30 
 	) );
-	
 	
 	// ============== STYLES AND COLORS ==============
 	$wp_customize->add_section ( 'loungeact_header_styles', array (
@@ -148,9 +147,9 @@ function loungeact_customize_register($wp_customize) {
 	// Header background color
 	$wp_customize->add_setting ( 'loungeact[header_background_color]', array (
 			'default' => $loungeact->get_setting ( 'header_background_color' ),
-			'type' => 'option',
-			
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_header_background_color', array (
 			'label' => esc_html__ ( 'Background color', 'loungeact' ),
 			'section' => 'loungeact_header_styles',
@@ -161,7 +160,7 @@ function loungeact_customize_register($wp_customize) {
 	$wp_customize->add_setting ( 'loungeact[header_background_opacity]', array (
 			'default' => $loungeact->get_setting ( 'header_background_opacity' ),
 			'type' => 'option',
-			'transport' => 'postMessage'
+			'transport' => 'postMessage' 
 	) );
 	$wp_customize->add_control ( 'loungeact_header_background_opacity', array (
 			'label' => esc_html__ ( 'Background opacity', 'loungeact' ),
@@ -172,16 +171,32 @@ function loungeact_customize_register($wp_customize) {
 			'input_attrs' => array (
 					'min' => 0,
 					'max' => 1,
+					'step' => 0.1 
+			)
+	) );
+	// Header background color opacity on scroll
+	$wp_customize->add_setting ( 'loungeact[header_background_opacity_on_scroll]', array (
+			'default' => $loungeact->get_setting ( 'header_background_opacity_on_scroll' ),
+			'type' => 'option',
+	) );
+	$wp_customize->add_control ( 'loungeact_header_background_opacity_on_scroll', array (
+			'label' => esc_html__ ( 'Background opacity on scrolling if fixed', 'loungeact' ),
+			'section' => 'loungeact_header_styles',
+			'settings' => 'loungeact[header_background_opacity_on_scroll]',
+			'type' => 'range',
+			'priority' => 30,
+			'input_attrs' => array (
+					'min' => 0,
+					'max' => 1,
 					'step' => 0.1
-			),
-			'active_callback' => 'loungeact_slider_exist'
+			)
 	) );
 	// Site title color
 	$wp_customize->add_setting ( 'loungeact[site_title_color]', array (
 			'default' => $loungeact->get_setting ( 'site_title_color' ),
-			'type' => 'option',
-			
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_site_title_color', array (
 			'label' => esc_html__ ( 'Site title color', 'loungeact' ),
 			'section' => 'loungeact_header_styles',
@@ -191,9 +206,9 @@ function loungeact_customize_register($wp_customize) {
 	// Blogdescription color
 	$wp_customize->add_setting ( 'loungeact[blogdescription_color]', array (
 			'default' => $loungeact->get_setting ( 'blogdescription_color' ),
-			'type' => 'option',
-			
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'blogdescription_color', array (
 			'label' => esc_html__ ( 'Site description color', 'loungeact' ),
 			'section' => 'loungeact_header_styles',
@@ -206,9 +221,9 @@ function loungeact_customize_register($wp_customize) {
 	// Logo
 	$wp_customize->add_setting ( 'loungeact[font_family_title]', array (
 			'default' => $loungeact->get_setting ( "font_family_title" ),
-			'type' => 'option',
-				
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( new Google_Font_Dropdown_Custom_Control ( $wp_customize, 'loungeact_font_family_title', array (
 			'label' => esc_html__ ( 'Title font family', 'loungeact' ),
 			'section' => 'title_tagline',
@@ -218,9 +233,9 @@ function loungeact_customize_register($wp_customize) {
 	// Logo
 	$wp_customize->add_setting ( 'loungeact[hide_title_in_homepage]', array (
 			'default' => $loungeact->get_setting ( "hide_title_in_homepage" ),
-			'type' => 'option',
-			
-	) );
+			'type' => 'option' 
+	)
+	 );
 	$wp_customize->add_control ( 'loungeact_hide_title_in_homepage', array (
 			'label' => esc_html__ ( 'Hide header text in homepage', 'loungeact' ),
 			'section' => 'title_tagline',
@@ -250,7 +265,6 @@ function loungeact_customize_register($wp_customize) {
 			'settings' => 'loungeact[logo_max_height]',
 			'priority' => 200 
 	) );
-	
 	
 	/*
 	 * ============== SLIDER ==============
@@ -282,7 +296,7 @@ function loungeact_customize_register($wp_customize) {
 	// slider height
 	$wp_customize->add_setting ( 'loungeact[slider_height]', array (
 			'default' => $loungeact->get_setting ( 'slider_height' ),
-			'type' => 'option'
+			'type' => 'option' 
 	) );
 	$wp_customize->add_control ( 'loungeact_slider_height', array (
 			'label' => esc_html__ ( 'Slider height', 'loungeact' ),
@@ -293,36 +307,42 @@ function loungeact_customize_register($wp_customize) {
 			'priority' => 30,
 			'active_callback' => 'is_loungeact_slider_not_fullscreen' 
 	) );
-	// fullscreen slider
-	$wp_customize->add_setting ( 'loungeact[slider_fullscreen]', array (
-			'default' => $loungeact->get_setting ( 'slider_fullscreen' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( 'loungeact_slider_fullscreen', array (
-			'label' => esc_html__ ( 'Fullscreen', 'loungeact' ),
-			'section' => 'loungeact_slider',
-			'settings' => 'loungeact[slider_fullscreen]',
-			'type' => 'checkbox',
-			'priority' => 40,
-			'active_callback' => 'loungeact_slider_exist' 
-	) );
 	// slide opacity
 	$wp_customize->add_setting ( 'loungeact[slide_overlay_opacity]', array (
 			'default' => $loungeact->get_setting ( 'slide_overlay_opacity' ),
-			'type' => 'option'
+			'type' => 'option' 
 	) );
 	$wp_customize->add_control ( 'loungeact_slide_overlay_opacity', array (
 			'label' => esc_html__ ( 'Slide overlay opacity', 'loungeact' ),
 			'section' => 'loungeact_slider',
 			'settings' => 'loungeact[slide_overlay_opacity]',
 			'type' => 'range',
-			'priority' => 50,
+			'priority' => 60,
 			'input_attrs' => array (
 					'min' => 0,
 					'max' => 1,
 					'step' => 0.1 
 			),
-			'active_callback' => 'loungeact_slider_exist' 
+			'active_callback' => 'loungeact_slider_selected' 
+	) );
+	
+	$wp_customize->add_setting ( 'loungeact[slider_layout]', array (
+			'default' => $loungeact->get_setting ( 'slider_layout' ),
+			'type' => 'option'
+	)
+		 );
+	$wp_customize->add_control ( 'loungeact_slider_layout', array (
+			'label' => esc_html__ ( 'Slider layout', 'loungeact' ),
+			'section' => 'loungeact_slider',
+			'settings' => 'loungeact[slider_layout]',
+			'type' => 'select',
+			'choices' => array (
+					'' => esc_html__ ( 'Normal', 'loungeact' ),
+					'loungeact-fullscreen-banner' => esc_html__ ( 'FullScreen', 'loungeact' ),
+					'loungeact-header-inside-banner' => esc_html__ ( 'Header inside', 'loungeact' ),
+			),
+			'priority' => 70,
+			'active_callback' => 'loungeact_slider_selected'
 	) );
 	
 	/*
@@ -395,27 +415,27 @@ function loungeact_customize_register($wp_customize) {
 	$wp_customize->add_section ( 'loungeact_menu_styles', array (
 			'title' => esc_html__ ( 'Styles', 'loungeact' ),
 			'panel' => 'nav_menus',
-			'priority' => 2
+			'priority' => 2 
 	) );
 	$wp_customize->add_setting ( 'loungeact[menu_font_color]', array (
 			'default' => $loungeact->get_setting ( 'menu_font_color' ),
-			'type' => 'option'
+			'type' => 'option' 
 	) );
 	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_menu_font_color', array (
 			'label' => esc_html__ ( 'Font color', 'loungeact' ),
 			'section' => 'loungeact_menu_styles',
 			'settings' => 'loungeact[menu_font_color]',
-			'priority' => 10
+			'priority' => 10 
 	) ) );
 	$wp_customize->add_setting ( 'loungeact[menu_font_color_hover]', array (
 			'default' => $loungeact->get_setting ( 'menu_font_color' ),
-			'type' => 'option'
+			'type' => 'option' 
 	) );
 	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_menu_font_color_hover', array (
 			'label' => esc_html__ ( 'Font color on mouse over', 'loungeact' ),
 			'section' => 'loungeact_menu_styles',
 			'settings' => 'loungeact[menu_font_color_hover]',
-			'priority' => 20
+			'priority' => 20 
 	) ) );
 	
 	/*
@@ -433,9 +453,9 @@ function loungeact_customize_register($wp_customize) {
 	) );
 	// Helper
 	$wp_customize->add_control ( new Fixed_Text_Custom_Control ( $wp_customize, 'loungeact_homepage_features_option_helper', array (
-			'description' => __ ( 'To add a "Loungeact Feature" widget <a href="#" class="button lougeact-goto-swh-features">click here</a>' , 'loungeact' ), 
+			'description' => __ ( 'To add a "Loungeact Feature" widget <a href="#" class="button lougeact-goto-swh-features">click here</a>', 'loungeact' ),
 			'section' => 'loungeact_homepage_features_option',
-			'priority' => 10
+			'priority' => 10 
 	) ) );
 	$wp_customize->add_setting ( 'loungeact[homepage_features_show]', array (
 			'default' => $loungeact->get_setting ( 'homepage_features_show' ),
@@ -448,7 +468,6 @@ function loungeact_customize_register($wp_customize) {
 			'type' => 'checkbox',
 			'priority' => 20 
 	) );
-
 }
 add_action ( 'customize_register', 'loungeact_customize_register' );
 
@@ -501,19 +520,26 @@ function loungeact_slider_exist() {
 	}
 }
 
+function loungeact_slider_selected($control) {
+		if ($control->manager->get_setting ( 'loungeact[slider]' )->value () != '') {
+			return true;
+		} else {
+			return false;
+		}
+}
+
 /**
  * Check if slider fullscreen is not active
  *
  * @return boolean
  */
 function is_loungeact_slider_not_fullscreen($control) {
-	if (loungeact_slider_exist ()) {
-		return true;
-	} else {
-		return false;
-	}
-	if (! $control->manager->get_setting ( 'loungeact[slider_fullscreen]' )->value ()) {
-		return true;
+	if (loungeact_slider_selected ($control)) {
+		if ($control->manager->get_setting ( 'loungeact[slider_layout]' )->value () == 'loungeact-fullscreen-banner') {
+			return false;
+		} else {
+			return true;
+		}
 	} else {
 		return false;
 	}

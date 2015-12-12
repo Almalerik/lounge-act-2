@@ -314,7 +314,8 @@ a {
 ## Menus Lounge Act
 --------------------------------------------------------------*/
 .navbar-default .loungeact-navbar {
-  text-align: center; }
+  text-align: center;
+  padding: 0; }
   .navbar-default .loungeact-navbar .loungeact-open-submenu {
     display: none; }
   .navbar-default .loungeact-navbar .nav-icon {
@@ -369,12 +370,6 @@ a {
 .navbar-default.navbar-left .menu-item-has-children > .sub-menu > .menu-item-has-children .sub-menu {
   left: 60%; }
 
-@media (min-width: 768px) {
-  .loungeact-navbar,
-  .navbar-fixed-top .navbar-collapse {
-    display: table-cell !important;
-    vertical-align: bottom;
-    padding-left: 15px; } }
 .navbar-toggle {
   border: none;
   background: transparent !important; }
@@ -398,6 +393,13 @@ a {
   .navbar-toggle.collapsed .bottom-bar {
     transform: rotate(0); }
 
+@media (min-width: 768px) {
+  .loungeact-navbar {
+    display: table-cell !important;
+    vertical-align: bottom; }
+
+  .navbar-left {
+    margin-left: -15px; } }
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -576,6 +578,11 @@ loungeact-container.container {
   top: 0;
   width: 100%; }
 
+.loungeact-header-inside-banner .lougeact-header {
+  position: absolute;
+  top: 0;
+  width: 100%; }
+
 .lougeact-header {
   z-index: 9999; }
   .lougeact-header .site-logo {
@@ -602,9 +609,7 @@ loungeact-container.container {
       padding: 0px 10px; }
     .lougeact-header .navbar-header .site-title {
       margin: 0;
-      font-size: 36px;
-      font-weight: 500;
-      line-height: 1.1; }
+      font-weight: bold; }
       .lougeact-header .navbar-header .site-title a:hover,
       .lougeact-header .navbar-header .site-title a:focus {
         text-decoration: none; }
@@ -654,8 +659,6 @@ loungeact-container.container {
       margin-bottom: 0; }
       .loungeact-banner .lougeact-slide-caption a:hover {
         text-decoration: none; }
-    .loungeact-banner .lougeact-slide-caption .lougeact-slide-btn1 {
-      margin-right: 20px; }
     .loungeact-banner .lougeact-slide-caption .lougeact-slide-btn2 {
       margin-left: 20px; }
 

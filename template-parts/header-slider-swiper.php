@@ -1,12 +1,7 @@
 <?php
-// if (is_customize_preview () ):
-if ($loungeact->get_setting ( 'slider' ) != "") :
-	$slider = get_post_meta ( $loungeact->get_setting ( 'slider' ), '_loungeact_slides', true );
-	$customizer_class = ! $loungeact->get_setting ( 'slider_show' ) ? 'hidden' : '';
-	if (! empty ( $slider ) && is_array ( $slider )) :
-		?>
+$slider = get_post_meta ( $loungeact->get_setting ( 'slider' ), '_loungeact_slides', true );
+if (! empty ( $slider ) && is_array ( $slider )) : ?>
 <div class="swiper-container loungeact-slider">
-
 	<div class="swiper-wrapper">
         <?php foreach ( $slider as $slide ): ?>
         <div class="swiper-slide" style="background: url('<?php echo wp_get_attachment_url( $slide['image_id']); ?>') center;">
@@ -48,23 +43,5 @@ jQuery(document).ready(function($) {
 
 //-->
 </script>
-
-
-
-
-
-
-
-
-	<?php 
-			endif;
-
-
-
-
-
-
-
-
-		endif;
-	//endif;
+<?php 
+endif;

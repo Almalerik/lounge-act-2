@@ -17,6 +17,16 @@ jQuery.noConflict()(function($) {
     });
 
     $(document).ready(function() {
+    	
+    	$(window).scroll(function() {    
+    	    var scroll = $(window).scrollTop();
+
+    	    if (scroll >= 50) {
+    	        $(".lougeact-wrapper").addClass("lougeact-scrolling");
+    	    } else {
+    	        $(".lougeact-wrapper").removeClass("lougeact-scrolling");
+    	    }
+    	});
 
 	// Fix Wp-Admin ToolBar
 	if ($("#wpadminbar").length > 0) {

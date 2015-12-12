@@ -25,6 +25,7 @@ jQuery(document).ready(function() {
 	});
 	
 	// Show or hide slider height
+	/*
 	if (wp.customize('loungeact[slider_fullscreen]').get() === true) {
 		wp.customize.control('loungeact_slider_height').deactivate();
 	} else {
@@ -33,10 +34,11 @@ jQuery(document).ready(function() {
 	jQuery('#customize-control-loungeact_slider_fullscreen input').on('change', function() {
 		if (this.checked) {
 			wp.customize.control('loungeact_slider_height').deactivate();
+			//wp.customize.control('loungeact_slider_header_inside').setting(false);
 		} else {
 			wp.customize.control('loungeact_slider_height').activate();
 		}
-	});
+	});*/
 	
 	jQuery('body').on('click', '.lougeact-goto-swh-features', function(){
 	    wp.customize.section('sidebar-widgets-homepage-features').focus();
@@ -50,6 +52,5 @@ jQuery(document).ready(function() {
 			wp.customize.control('header_margin_bottom').activate();
 		}
 	});
-	
 	
 });

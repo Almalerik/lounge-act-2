@@ -1,7 +1,7 @@
 <?php
 $description = get_bloginfo ( 'description', 'display' );
 ?>
-<nav class="navbar navbar-default navbar-left">
+<nav class="navbar navbar-default">
 	<div class="navbar-header">
 	
 		<?php if ( has_nav_menu( "primary" ) ) :?>
@@ -23,7 +23,7 @@ $description = get_bloginfo ( 'description', 'display' );
 							'link_before' => '<span class="loungeact-link-before">[</span>',
 							'link_after' =>'<span class="loungeact-link-after">]</span>',
 							'walker' => new LoungeAct_Walker(), 
-							'menu_class' => 'nav navbar-nav loungeact-menu'
+							'menu_class' => 'nav navbar-nav navbar-left loungeact-menu'
 			) ); ?>
 		</div>
 		<?php endif; ?>

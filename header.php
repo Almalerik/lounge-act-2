@@ -34,12 +34,7 @@ $loungeact = get_loungeact_theme ();
 			<?php include(locate_template('template-parts/header/'. $loungeact -> get_setting("header_template")));?>
 		</div>
 		
-		<div class="row">
-			<div class="loungeact-banner">
-			<?php include(locate_template('template-parts/header-slider-swiper.php'));?>
-			</div>
-		</div>
-
+		<!-- 
 		<header id="masthead" class="site-header" role="banner">
 			<div class="site-branding">
 			<?php
@@ -64,14 +59,15 @@ $loungeact = get_loungeact_theme ();
 			endif;
 			?>
 		</div>
-			<!-- .site-branding -->
+			
 
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lounge-act' ); ?></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav>
-			<!-- #site-navigation -->
+			
 		</header>
+		-->
 		<!-- #masthead -->
 
-		<div id="content" class="site-content row">
+		<div id="content" class="site-content">
