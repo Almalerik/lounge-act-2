@@ -1,0 +1,132 @@
+/*
+
+.loungeact-cf-image-preview img {
+	width: auto;
+	height: auto;
+	max-width: 100px;
+	max-height: 100px;
+}
+
+.loungeact-icon-select2 {
+	font-family: 'FontAwesome';
+}
+
+.loungeact-cf-option-button, .loungeact-cf-field-custom {
+	margin: 12px 0;
+}
+
+.loungeact-cf-add-image-container input, input.loungeact-cf-options-val
+	{
+	width: 75%;
+}
+
+.loungeact-cf-container-bordered {
+	border: 1px solid #dedede;
+	padding: 20px 5px 5px 5px;
+	position: relative;
+}
+
+.loungeact-cf-container-bordered .loungeact-cf-option-reset {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.loungeact-color-alert {
+	color: #dd3d36;
+}
+
+/********** CUSTOM MENU **********/
+/*
+.loungeact-menu-options {
+	float: left;
+	margin: 5px 0;
+	width: 100%;
+}
+
+/********** END - CUSTOM MENU **********/
+
+/********** SLIDER **********/
+/*
+#loungeact-edit-slide-wrapper td {
+	padding-top: 25px;
+}
+
+.loungeact-slide-thumbnail, .loungeact-slide-meta {
+	position: relative;
+}
+
+
+.loungeact-slide-move:hover {
+	cursor: move;
+}
+
+.loungeact-slide-delete {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #D54E21;
+	color: #ffffff;
+	text-align: center;
+	margin: 0;
+	padding: 5px 15px;
+}
+
+.loungeact-slide-delete:hover {
+	cursor: pointer;
+}
+
+.loungeact-slide-thumbnail-delete .fa-circle {
+	color: #D54E21;
+}
+
+.loungeact-slide-thumbnail-delete .fa-stack {
+	position: absolute;
+}
+
+
+
+#loungeact-edit-slide-wrapper .ui-sortable-helper {
+	height: 70px !important;
+	border-bottom: 0;
+	background-color: #ffffff;
+	overflow: hidden;
+	border: 1px solid #000;
+}
+
+
+
+#loungeact-edit-slide-wrapper .sorting img {
+	display: block;
+	max-height: 50px;
+	width: auto;
+	height: auto;
+}
+
+#loungeact-edit-slide-wrapper .sorting .hide-on-sorting {
+	display: none;
+}
+
+#loungeact-edit-slide-wrapper .sorting td {
+	padding: 5px;
+	display: table-cell !important;
+}
+/********** END - SLIDER **********/
+
+/********** CUSTOMIZER **********//*
+.custom-customize-sidebar li {
+	float: left;
+	text-align: center;
+	width: 50%;
+}
+
+.custom-customize-sidebar img {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.custom-customize-sidebar input {
+	margin-left: 10px;
+}
+
+/********** END CUSTOMIZER **********/

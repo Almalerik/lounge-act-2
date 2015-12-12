@@ -1,2 +1,6 @@
-.sass-cache
-*.css.map
+.DS_Store
+.buildpath
+.project
+.settings/*
+.sass-cache/*
+.externalTool*/*
