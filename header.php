@@ -8,8 +8,10 @@
  *
  * @package Lounge_Act
  */
+$loungeact = get_loungeact_theme ();
 
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -18,33 +20,58 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
+
+<?php $loungeact -> custom_head();?>
+
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'lounge-act' ); ?></a>
+	<div id="page" class="site lougeact-wrapper <?php echo $loungeact -> get_page_class();?>">
+	
+		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'lounge-act' ); ?></a>
+		
+		<div class="row lougeact-header <?php echo $loungeact -> get_setting("header_fixed_top");?>">
+			<?php include(locate_template('template-parts/header/'. $loungeact -> get_setting("header_template")));?>
+		</div>
+		
+		<div class="row">
+			<div class="loungeact-banner">
+			<?php include(locate_template('template-parts/header-slider-swiper.php'));?>
+			</div>
+		</div>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
 			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+			if (is_front_page () && is_home ()) :
+				?>
+				<h1 class="site-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</h1>
 			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+				<p class="site-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</p>
+			
+			<?phpendif;
+			
+			$description = get_bloginfo ( 'description', 'display' );
+			if ($description || is_customize_preview ()) :
+				?>
+				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+			
 			<?php
 			endif;
+			?>
+		</div>
+			<!-- .site-branding -->
 
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lounge-act' ); ?></button>
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lounge-act' ); ?></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</nav>
+			<!-- #site-navigation -->
+		</header>
+		<!-- #masthead -->
 
-	<div id="content" class="site-content">
+		<div id="content" class="site-content row">

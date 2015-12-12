@@ -1,0 +1,21 @@
+.loungeact-action-move, .loungeact-action-delete {
+	position: relative;
+	color: $color__custom-action;
+	background-color: $background-color__custom-action;
+}
+
+.loungeact-action-move {
+	float: left;
+	padding: 10px 18px;
+}
+.loungeact-action-move:hover {
+	cursor: move;
+}
+.loungeact-action-delete {
+	float: right;
+	padding: 9px 15px;
+	background-color: $background-color__custom-action-red;
+}
+.loungeact-action-delete:hover {
+	cursor: pointer;
+}

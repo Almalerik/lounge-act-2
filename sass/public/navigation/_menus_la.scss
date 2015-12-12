@@ -1,0 +1,157 @@
+.navbar-default {
+	.loungeact-navbar {
+		text-align: center;
+		
+		.loungeact-open-submenu {
+			display: none;
+		}
+		
+		.nav-icon {
+			display: block;
+			font-size: 25px;
+		}
+		
+		.nav-image {
+			display: block;
+			max-width: 25px;
+			max-height: 25px;
+		    margin: 0 auto;
+		}
+		
+		.nav-custom-html {
+			display: block;
+		}
+		
+		.loungeact-link-before {
+			margin-right: 5px;
+			visibility: hidden;
+		}
+		
+		.loungeact-link-after {
+			margin-left: 5px;
+			visibility: hidden;
+		}
+		
+		.navbar-nav>li {
+		
+			&>a {
+				color: $color__header-nav-font;
+				
+				&:hover {
+					color: $color__header-nav-font-hover;
+					& .loungeact-link-before,
+					& .loungeact-link-after {
+						visibility: visible;
+					}
+				}
+			}
+			
+			&.active>a {
+				background-color: transparent;
+				&:focus,
+				&:hover {
+					background-color: transparent;
+				}
+				
+				& .loungeact-link-before,
+				& .loungeact-link-after {
+					visibility: visible;
+				}
+			}
+		}
+	
+		
+		.dropdown-menu {
+			-webkit-border-radius: 0;
+			-moz-border-radius: 0;
+			border-radius: 0;
+			padding: 0;
+			
+			&>li>a {
+				padding: 10px 20px;
+				
+				&:hover,
+				&:focus {
+					color: #262626;
+					text-decoration: none;
+					background-color: #dedede;
+				}
+			}
+		}
+		
+		.menu-item-has-children{
+		
+			&:hover>.sub-menu {
+				display: block;
+			}
+			
+			&>.sub-menu>.menu-item-has-children .sub-menu {
+				top: 0;
+				right: 60%;
+				margin-top: -1px;
+				margin-left: -1px;
+			}
+		}
+	
+	}
+
+	.loungeact-navbar-mobile {
+		.navbar-nav {
+			margin: 7.5px 0;
+		}
+	}
+}
+
+.navbar-default.navbar-left .menu-item-has-children>.sub-menu>.menu-item-has-children .sub-menu{
+	left: 60%;
+}
+
+
+@media ( min-width : 768px) {
+
+	.loungeact-navbar,
+	.navbar-fixed-top .navbar-collapse {
+		display: table-cell !important;
+		vertical-align: bottom;
+	    padding-left: 15px;
+	}
+
+}
+
+.navbar-toggle {
+  border: none;
+  background: transparent !important;
+  
+  &:hover {
+    background: transparent !important;
+  }
+
+  .icon-bar {
+    width: 22px;
+    transition: all 0.2s;
+  }
+  .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+  .middle-bar {
+    opacity: 0;
+  }
+  .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+
+  &.collapsed {
+    .top-bar {
+      transform: rotate(0);      
+    }
+    .middle-bar {
+      opacity: 1;
+    }
+    .bottom-bar {
+      transform: rotate(0);
+    }
+  }
+}
+

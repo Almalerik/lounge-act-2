@@ -1,0 +1,26 @@
+.lougeact-highlights-sidebar { 
+	h2 {
+		text-transform: uppercase;
+    	font-weight: bold;
+	}
+	
+	.vertical-align > [class^="col-"].loungeact-col-left, 
+	.vertical-align > [class*=" col-"].loungeact-col-left {
+  	  justify-content: flex-end;
+	}
+	
+	.vertical-align > [class^="col-"].loungeact-col-left .loungeact-text, 
+	.vertical-align > [class*=" col-"].loungeact-col-left .loungeact-text {
+  	  text-align: right;
+	}
+
+	.vertical-align > [class^="col-"].loungeact-col-right, 
+	.vertical-align > [class*=" col-"].loungeact-col-right {
+  	  justify-content: flex-start;
+	}
+	
+	.vertical-align > [class^="col-"].loungeact-col-right .loungeact-text, 
+	.vertical-align > [class*=" col-"].loungeact-col-right .loungeact-text {
+  	  text-align: left;
+	}
+}
