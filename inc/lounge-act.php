@@ -28,7 +28,6 @@ class Lounge_Act_Theme {
 			'header_background_color' => '#ffffff',
 			'header_background_opacity' => '1',
 			"header_fixed_top" => "",
-			'header_margin_bottom' => '0px',
 			'site_title_color' => '#337ab7',
 			'blogdescription_color' => '#777777',
 			'slider' => '',

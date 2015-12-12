@@ -1,25 +1,12 @@
-.lougeact-wrapper.loungeact-header-fixed-top {
-	padding-top: 0px;
-	
-	& .navbar-fixed-top.row {
-		margin-right: 0;
-		margin-left: 0;
-	}
-}
-
 
 .loungeact-fullscreen-banner .lougeact-header {
 	position: absolute;
 	top: 0;
 	width: 100%;
-	
-	&.navbar-fixed-top {
-		position: fixed;
-	}
 }
 
 .lougeact-header {
-	
+	z-index: 9999;
 
 	.site-logo {
 		max-height: 100px;
@@ -97,10 +84,6 @@
 @media (min-width: 768px) {
 	.navbar-collapse.collapse {
 	    display: table-cell !important;
-	}
-	
-	.navbar-fixed-top .navbar-collapse {
-		padding-right: 15px;
 	}
 	
 	.loungeact-navbar-mobile,

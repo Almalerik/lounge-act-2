@@ -25,6 +25,9 @@ jQuery.noConflict()(function($) {
 		fixWpAdminBarHeight();
 	    });
 	}
+	
+	//Sticky Header
+	$('.navbar-sticky-top').stick_in_parent();
 
 	$('.loungeact-fullscreen-banner .loungeact-banner').loungeact_fullscreen_banner();
 

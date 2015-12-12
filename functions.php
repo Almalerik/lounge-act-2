@@ -168,6 +168,10 @@ if (! function_exists ( 'loungeact_public_scripts' )) :
 		// wp_enqueue_script ( 'loungeact-flexslider-script', get_template_directory_uri () . '/assets/flexslider/js/jquery.flexslider-min.js', array (
 		// 'jquery'
 		// ), '3.3.5', true );
+		// Sticky-kit
+		wp_enqueue_script ( 'loungeact-stickykit-script', get_template_directory_uri () . '/assets/sticky-kit/1.1.2/jquery.sticky-kit.min.js', array (
+				'jquery'
+		 ), '1.1.2', true );
 		
 		wp_enqueue_style ( 'loungeact-swiper-style', get_template_directory_uri () . '/assets/swiper/css/swiper.css' );
 		wp_enqueue_script ( 'loungeact-swiper-script', get_template_directory_uri () . '/assets/swiper/js/swiper.jquery.js', array (

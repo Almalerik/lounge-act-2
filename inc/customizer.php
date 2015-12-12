@@ -120,23 +120,9 @@ function loungeact_customize_register($wp_customize) {
 			'type' => 'select',
 			'choices' => array (
 					'' => esc_html__ ( 'Top', 'loungeact' ),
-					'navbar-fixed-top' => esc_html__ ( 'Fixed top', 'loungeact' ) 
+					'navbar-sticky-top' => esc_html__ ( 'Fixed top', 'loungeact' ) 
 			),
 			'priority' => 10 
-	) );
-	// Header fixed top
-	$wp_customize->add_setting ( 'loungeact[header_margin_bottom]', array (
-			'default' => $loungeact->get_setting ( 'header_margin_bottom' ),
-			'type' => 'option',
-				
-	) );
-	$wp_customize->add_control ( 'loungeact_header_margin_bottom', array (
-			'label' => esc_html__ ( 'Simulate header height', 'loungeact' ),
-			'description' => esc_html__ ( 'Define also the unit system like px,% ...', 'loungeact' ),
-			'section' => 'loungeact_header_options',
-			'settings' => 'loungeact[header_margin_bottom]',
-			'active_callback' => 'is_header_fixed_top',
-			'priority' => 20
 	) );
 	// Header templates
 	$wp_customize->add_setting ( 'loungeact[header_template]', array (
