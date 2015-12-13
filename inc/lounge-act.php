@@ -27,7 +27,7 @@ class Lounge_Act_Theme {
 			'header_template' => 'default.php',
 			'header_background_color' => '#ffffff',
 			'header_background_opacity' => '1',
-			'header_background_opacity_on_scroll' => '1',
+			'header_background_opacity_inside_slider' => '0',
 			"header_fixed_top" => "",
 			'site_title_color' => '#337ab7',
 			'blogdescription_color' => '#777777',
@@ -35,6 +35,7 @@ class Lounge_Act_Theme {
 			'slider_height' => '400px',
 			'slide_overlay_opacity' => '0',
 			'slider_layout' => '',
+			'slider_only_in_homepage' => true,
 			'font_family_title' => 'Poiret One:regular',
 			'font_family_default' => 'Open Sans:regular',
 			'font_family_h1' => 'Open Sans:regular',
@@ -181,14 +182,21 @@ class Lounge_Act_Theme {
 		
 		if ($this->get_setting ( "header_background_color" )) {
 			$result .= ".lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity" ) ) ) . ");}\n";
+			$result .= ".loungeact-fullscreen-banner.lougeact-scrolling .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity" ) ) ) . ");}\n";
+			$result .= ".loungeact-header-inside-banner.lougeact-scrolling .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity" ) ) ) . ");}\n";
 		} else {
 			$result .= ".lougeact-header .navbar-default { background-color: transparent;}";
+			$result .= ".loungeact-fullscreen-banner.lougeact-scrolling .navbar-default { background-color: transparent;}";
+			$result .= ".loungeact-header-inside-banner.lougeact-scrolling .navbar-default { background-color: transparent;}";
 		}
 		
-		if ($this->get_setting ( "header_background_opacity_on_scroll" )) {
-			$result .= ".lougeact-scrolling .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity_on_scroll" ) ) ) . ");}\n";
+		if ($this->get_setting ( "header_background_opacity_inside_slider" )) {
+			$result .= ".loungeact-header-inside-banner .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity_inside_slider" ) ) ) . ");}\n";
+			$result .= ".loungeact-fullscreen-banner .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity_inside_slider" ) ) ) . ");}\n";
+			
 		} else {
-			$result .= ".lougeact-scrolling .lougeact-header .navbar-default { background-color: transparent;}";
+			$result .= ".loungeact-header-inside-banner .lougeact-header .navbar-default { background-color: transparent;}";
+			$result .= ".loungeact-fullscreen-banner .lougeact-header .navbar-default { background-color: transparent;}";
 		}
 		
 		// Main Menu
@@ -297,7 +305,14 @@ class Lounge_Act_Theme {
 		}
 		// If a slider is selected, add class layout
 		if ($this->get_setting ( "slider" ) != '' ) {
-			$classes [] = $this->get_setting ( 'slider_layout' );
+			if (is_home() || is_front_page()) {
+				$classes [] = $this->get_setting ( 'slider_layout' );
+			} else {
+				// if not in home and slider_only_in_homepage == false, add class
+				if ( ! $this->get_setting ( 'slider_only_in_homepage' ) ) {
+					$classes [] = $this->get_setting ( 'slider_layout' );
+				}
+			}
 		}
 		
 		

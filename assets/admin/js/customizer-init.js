@@ -44,13 +44,13 @@ jQuery(document).ready(function() {
 	    wp.customize.section('sidebar-widgets-homepage-features').focus();
 	});
 	
-	
+	/*
 	jQuery('#customize-control-loungeact_header_fixed_top select').on('change', function() {
 		if (jQuery(this).val == "") {
 			wp.customize.control('header_margin_bottom').deactivate();
 		} else {
 			wp.customize.control('header_margin_bottom').activate();
 		}
-	});
+	});*/
 	
 });

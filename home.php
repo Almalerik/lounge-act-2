@@ -15,11 +15,6 @@ $loungeact = get_loungeact_theme ();
 
 get_header ();
 ?>
-<?php if ($loungeact->get_setting ( 'slider' ) != "") : ?>
-<div class="loungeact-banner row">
-	<?php include(locate_template('template-parts/header-slider-swiper.php'));?>
-</div>
-<?php endif;?>
 <div id="primary" class="content-area <?php echo $loungeact -> get_content_class(); ?>">
 	<main id="main" class="site-main" role="main">
 	

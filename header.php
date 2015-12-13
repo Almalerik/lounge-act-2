@@ -34,6 +34,14 @@ $loungeact = get_loungeact_theme ();
 			<?php include(locate_template('template-parts/header/'. $loungeact -> get_setting("header_template")));?>
 		</div>
 		
+		<?php if ($loungeact->get_setting ( 'slider' ) != "") : ?>
+			<?php if ((is_home() || is_front_page()) || ( ! $loungeact->get_setting ( 'slider_only_in_homepage' ) && ! (is_home() || is_front_page()))) : ?>
+				<div class="loungeact-banner row">
+					<?php include(locate_template('template-parts/header-slider-swiper.php'));?>
+				</div>
+			<?php endif;?>
+		<?php endif;?>
+		
 		<!-- 
 		<header id="masthead" class="site-header" role="banner">
 			<div class="site-branding">

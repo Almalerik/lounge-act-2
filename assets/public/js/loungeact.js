@@ -18,9 +18,13 @@ jQuery.noConflict()(function($) {
 
     $(document).ready(function() {
     	
+    	
+    	//This is necessary if user refresh page when not top
+    	if ($(window).scrollTop() >= 50) {
+    		$(".lougeact-wrapper").addClass("lougeact-scrolling");
+    	}
     	$(window).scroll(function() {    
     	    var scroll = $(window).scrollTop();
-
     	    if (scroll >= 50) {
     	        $(".lougeact-wrapper").addClass("lougeact-scrolling");
     	    } else {
@@ -29,16 +33,18 @@ jQuery.noConflict()(function($) {
     	});
 
 	// Fix Wp-Admin ToolBar
+    	/*
 	if ($("#wpadminbar").length > 0) {
 	    fixWpAdminBarHeight();
 	    $(window).resize(function() {
 		fixWpAdminBarHeight();
 	    });
 	}
+	*/
 	
 	//Sticky Header
-	$('.navbar-sticky-top').stick_in_parent();
-
+	$('.navbar-sticky-top').stick_in_parent({'sticky_class' : 'loungeact-header-sticked', 'parent': $('body')});
+	
 	$('.loungeact-fullscreen-banner .loungeact-banner').loungeact_fullscreen_banner();
 
 	$(window).resize(function() {
@@ -97,6 +103,7 @@ jQuery.noConflict()(function($) {
     /**
      * Fix Wp-Admin ToolBar
      */
+    /*
     function fixWpAdminBarHeight() {
 
 	var selectorToFix = [ '.lougeact-header.navbar-fixed-top', '.navbar-fixed-top .navbar-collapse.loungeact-menu-slide-left' ];
@@ -109,6 +116,6 @@ jQuery.noConflict()(function($) {
 		$(selectorToFix[i]).css("top", jQuery("#wpadminbar").outerHeight());
 	    }
 	}
-    }
+    }*/
 
 });
