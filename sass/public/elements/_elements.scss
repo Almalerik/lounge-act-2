@@ -36,4 +36,8 @@ img {
 	max-width: 100%; /* Adhere to container width. */
 }
 
+a:hover, a:focus {
+    text-decoration: none;
+}
+
 @import "tables";

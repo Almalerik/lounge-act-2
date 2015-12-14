@@ -52,15 +52,14 @@ function lounge_act_entry_footer() {
 			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'loungeact' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
-		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'loungeact' ) );
+		$tags_list = get_the_tag_list( '<span class="label label-default">', '</span><span class="label label-default">', '</span>' );
 		if ( $tags_list ) {
 			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'loungeact' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link">';
+		echo '<span class="comments-link"><i class="fa fa-comments-o"></i>';
 		comments_popup_link( esc_html__( 'Leave a comment', 'loungeact' ), esc_html__( '1 Comment', 'loungeact' ), esc_html__( '% Comments', 'loungeact' ) );
 		echo '</span>';
 	}

@@ -20,6 +20,7 @@ jQuery.noConflict()(function($) {
     	
     	
     	//This is necessary if user refresh page when not top
+    	if ($('#page').hasClass('loungeact-header-fixed-top')){
     	if ($(window).scrollTop() >= 50) {
     		$(".lougeact-wrapper").addClass("lougeact-scrolling");
     	}
@@ -31,6 +32,7 @@ jQuery.noConflict()(function($) {
     	        $(".lougeact-wrapper").removeClass("lougeact-scrolling");
     	    }
     	});
+    	}
 
 	// Fix Wp-Admin ToolBar
     	/*

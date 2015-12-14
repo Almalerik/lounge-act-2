@@ -26,3 +26,14 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+
+.entry-footer > span {
+	display: block;
+}
+
+.tags-links > span{
+	margin-right: 5px;
+	a {
+		color: $color__tags-links;
+	}
+}

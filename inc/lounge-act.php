@@ -189,6 +189,8 @@ class Lounge_Act_Theme {
 			$result .= ".loungeact-fullscreen-banner.lougeact-scrolling .navbar-default { background-color: transparent;}";
 			$result .= ".loungeact-header-inside-banner.lougeact-scrolling .navbar-default { background-color: transparent;}";
 		}
+		//SubMenu bg color
+		//$result .= ".lougeact-header .loungeact-navbar-mobile { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), 1)) . ");}\n";
 		
 		if ($this->get_setting ( "header_background_opacity_inside_slider" )) {
 			$result .= ".loungeact-header-inside-banner .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity_inside_slider" ) ) ) . ");}\n";
@@ -202,7 +204,8 @@ class Lounge_Act_Theme {
 		// Main Menu
 		$result .= $this->generate_css ( ".navbar-default .loungeact-navbar .navbar-nav > li > a", "color", "menu_font_color", '', '', false );
 		$result .= $this->generate_css ( ".navbar-default .loungeact-navbar .navbar-nav > li > a:hover", "color", "menu_font_color_hover", '', '', false );
-		
+		$result .= $this->generate_css ( ".navbar-default .navbar-toggle .icon-bar", "background-color", "menu_font_color", '', '', false );
+		$result .= $this->generate_css ( ".navbar-default .navbar-toggle:hover .icon-bar", "background-color", "menu_font_color_hover", '', '', false );
 		
 		
 		
