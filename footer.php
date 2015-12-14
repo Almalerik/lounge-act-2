@@ -12,7 +12,8 @@
 $loungeact = get_loungeact_theme ();
 
 ?>
-
+		</div>
+		
 		<?php if ( $loungeact -> get_sidebar_class('sidebar-right') ): ?>
 		<div class="<?php echo $loungeact -> get_sidebar_class('sidebar-right'); ?>">
 			<?php dynamic_sidebar('sidebar-right'); ?>

@@ -85,3 +85,5 @@ $loungeact = get_loungeact_theme ();
 				<?php dynamic_sidebar('sidebar-left'); ?>
 			</div>
 			<?php endif;?>
+			
+			<div class="<?php echo $loungeact -> get_content_class(); ?>">

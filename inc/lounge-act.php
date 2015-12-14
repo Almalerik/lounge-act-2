@@ -19,7 +19,6 @@ class Lounge_Act_Theme {
 			'container_class' => 'container-fluid',
 			'container_max_width' => '1170px',
 			"page_layout" => "full",
-			"sidebar_width" => "3",
 			"gridsystem_class" => "md",
 			'hide_title_in_homepage' => false,
 			'logo' => '',
@@ -214,7 +213,7 @@ class Lounge_Act_Theme {
 		$result .= $this->generate_css ( ".site-description", "color", "blogdescription_color", '', '', false );
 		
 		if ($this->get_setting ( "font_family_title" )) {
-			$result .= "h1.site-title { font-family: '" . explode ( ":", $this->get_setting ( "font_family_title" ) ) [0] . "'}\n";
+			$result .= ".site-title { font-family: '" . explode ( ":", $this->get_setting ( "font_family_title" ) ) [0] . "'}\n";
 		}
 		if ($this->get_setting ( "font_family_default" )) {
 			$result .= "body { font-family: '" . explode ( ":", $this->get_setting ( "font_family_default" ) ) [0] . "'}\n";
@@ -268,27 +267,29 @@ class Lounge_Act_Theme {
 		echo $this->custom_css ();
 	}
 	public function get_sidebar_class($col) {
+		$gridsystem_class = 'col-' . $this -> get_setting('gridsystem_class') . '-';
 		if ($col == 'sidebar-left' && ($this->get_setting ( 'page_layout' ) == 'all' || $this->get_setting ( 'page_layout' ) == 'left')) {
-			return "col-md-" . $this->get_setting ( 'sidebar_width' );
+			return $gridsystem_class . $this->get_setting ( 'sidebar_width' );
 		} elseif ($col == 'sidebar-right' && ($this->get_setting ( 'page_layout' ) == 'all' || $this->get_setting ( 'page_layout' ) == 'right')) {
-			return "col-md-" . $this->get_setting ( 'sidebar_width' );
+			return $gridsystem_class . $this->get_setting ( 'sidebar_width' );
 		}
 		return '';
 	}
 	public function get_content_class() {
 		$page_layout = $this->get_setting ( 'page_layout' );
 		$sidebar_width = $this->get_setting ( 'sidebar_width' );
+		$gridsystem_class = 'col-' . $this -> get_setting('gridsystem_class') . '-';
 		
 		switch ($page_layout) {
 			case "left" :
 			case "right" :
-				return 'col-md-' . (12 - intval ( $sidebar_width ));
+				return $gridsystem_class . (12 - intval ( $sidebar_width ));
 				break;
 			case "all" :
-				return 'col-md-' . (12 - (intval ( $this->get_setting ( 'sidebar_width' ) * 2 )));
+				return $gridsystem_class . (12 - (intval ( $this->get_setting ( 'sidebar_width' ) * 2 )));
 				break;
 			case "full" :
-				return 'col-md-12';
+				return $gridsystem_class . '12';
 				break;
 		}
 	}
