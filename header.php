@@ -78,4 +78,10 @@ $loungeact = get_loungeact_theme ();
 		-->
 		<!-- #masthead -->
 
-		<div id="content" class="site-content">
+		<div id="content" class="site-content row">
+		
+			<?php if ( $loungeact -> get_sidebar_class('sidebar-left') ): ?>
+			<div class="<?php echo $loungeact -> get_sidebar_class('sidebar-left'); ?>">
+				<?php dynamic_sidebar('sidebar-left'); ?>
+			</div>
+			<?php endif;?>
