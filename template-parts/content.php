@@ -23,7 +23,12 @@
 					if ( is_single() ) {
 						the_title( '<h1 class="entry-title">', '</h1>' );
 					} else {
-						the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+						$sticky_icon = '';
+						if (is_sticky()) {
+							$sticky_icon = '<div class="sticky-icon-wrapper"><i class="fa fa-thumb-tack sticky-icon"></i></div>';
+						}
+						
+						the_title( '<h2 class="entry-title">' . $sticky_icon . '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 					}
 		
 				if ( 'post' === get_post_type() ) : ?>

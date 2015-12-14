@@ -567,8 +567,25 @@ a {
   font-size: 90%;
   color: #555555; }
   .entry-meta .posted-on-icon,
-  .entry-meta .byline-icon {
+  .entry-meta .byline-icon,
+  .entry-meta .categories-icon {
     margin-right: 5px; }
+
+.sticky-icon-wrapper {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  background-color: red;
+  border-radius: 50%;
+  vertical-align: bottom;
+  margin-bottom: 2px;
+  margin-right: 10px; }
+  .sticky-icon-wrapper .sticky-icon {
+    font-size: 0.6em;
+    color: white;
+    padding-bottom: 7px;
+    vertical-align: middle; }
 
 .page-links {
   clear: both;

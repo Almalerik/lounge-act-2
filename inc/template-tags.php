@@ -30,7 +30,7 @@ function lounge_act_posted_on() {
 	);
 
 	$byline = sprintf(
-		esc_html_x( ' %s |', 'post author', 'loungeact' ),
+		esc_html_x( ' %s | ', 'post author', 'loungeact' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), 16, '', '', array('class' => 'img-circle byline-icon') ) .  esc_html( get_the_author() ) . '</a></span>'
 	);
 	
@@ -40,7 +40,7 @@ function lounge_act_posted_on() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'loungeact' ) );
 		if ( $categories_list && lounge_act_categorized_blog() ) {
-			$categories = sprintf( '<span class="cat-links">' . esc_html__( '%1$s', 'loungeact' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			$categories = '<span class="cat-links"><i class="fa fa-tag categories-icon"></i>' .  $categories_list . '</span>'; // WPCS: XSS OK.
 		}
 	}
 
@@ -54,17 +54,11 @@ if ( ! function_exists( 'lounge_act_entry_footer' ) ) :
  * Prints HTML with meta information for the categories, tags and comments.
  */
 function lounge_act_entry_footer() {
-	// Hide category and tag text for pages.
+	// Hide tag text for pages.
 	if ( 'post' === get_post_type() ) {
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'loungeact' ) );
-		if ( $categories_list && lounge_act_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'loungeact' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-		}
-
 		$tags_list = get_the_tag_list( '<span class="label label-default">', '</span><span class="label label-default">', '</span>' );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'loungeact' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
 		}
 	}
 
