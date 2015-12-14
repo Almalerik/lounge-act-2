@@ -26,6 +26,24 @@
 		max-height: 100px;
 	}
 	
+	.site-title {
+		font-size: $font__site-title-size;
+		margin: 0;
+		font-weight: bold;
+		line-height: 1.1;
+		
+		a {
+			color: $color__site-title;
+		}
+	}
+	
+	.site-description {
+		display: block;
+		font-size: 50%;
+		font-weight: 400;
+		line-height: 1;
+		color: $color__site-description;
+	}
 	
 	.navbar-default {
 		border-radius: 0;
@@ -55,23 +73,6 @@
 		
 		.navbar-brand-name {
 			padding: 0px 10px;
-		}
-		
-		.site-title {
-			margin: 0;
-			font-weight: bold;
-			
-			a:hover,
-			a:focus {
-				text-decoration: none;
-			}
-		}
-		
-		.site-description {
-			display: block;
-			font-size: 50%;
-			font-weight: 400;
-			line-height: 1;
 		}
 	}
 }

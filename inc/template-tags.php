@@ -25,16 +25,26 @@ function lounge_act_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'loungeact' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+		esc_html_x( '%s |', 'post date', 'loungeact' ),
+		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><i class="fa fa-calendar posted-on-icon"></i>' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'loungeact' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		esc_html_x( ' %s |', 'post author', 'loungeact' ),
+		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), 16, '', '', array('class' => 'img-circle byline-icon') ) .  esc_html( get_the_author() ) . '</a></span>'
 	);
+	
+	$categories = "";
+	// Hide category for pages.
+	if ( 'post' === get_post_type() ) {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( esc_html__( ', ', 'loungeact' ) );
+		if ( $categories_list && lounge_act_categorized_blog() ) {
+			$categories = sprintf( '<span class="cat-links">' . esc_html__( '%1$s', 'loungeact' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		}
+	}
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>' . $categories; // WPCS: XSS OK.
 
 }
 endif;
@@ -109,7 +119,7 @@ function lounge_act_categorized_blog() {
 /**
  * Flush out the transients used in loungeact_categorized_blog.
  */
-function lounge_act_category_transient_flusher() {
+function loungeact_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}

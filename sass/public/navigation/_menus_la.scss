@@ -36,10 +36,10 @@
 		.navbar-nav>li {
 		
 			&>a {
-				color: $color__header-nav-font;
+				color: $color__header-nav;
 				
 				&:hover {
-					color: $color__header-nav-font-hover;
+					color: $color__header-nav-hover;
 					& .loungeact-link-before,
 					& .loungeact-link-after {
 						visibility: visible;
@@ -156,6 +156,10 @@
 	
 	.navbar-left {
     	margin-left: -15px;
+	}
+	
+	.navbar-right {
+    	margin-right: 0;
 	}
 
 }

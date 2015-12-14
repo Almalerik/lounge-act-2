@@ -31,7 +31,8 @@ $fa_icon = array (
 		'arrow-circle-o-up' => 'fa fa-arrow-circle-o-up',
 		'inbox' => 'fa fa-inbox',
 		'play-circle-o' => 'fa fa-play-circle-o',
-		'rotate-rightfa fa-repeat' => 'fa fa-rotate-rightfa fa-repeat',
+		'fa-repeat' => 'fa fa-repeat',
+		'rotate-right' => 'fa fa-rotate-right',
 		'refresh' => 'fa fa-refresh',
 		'list-alt' => 'fa fa-list-alt',
 		'lock' => 'fa fa-lock',
@@ -589,4 +590,3 @@ $fa_icon = array (
 		'black-tie' => 'fa fa-black-tie',
 		'fonticons' => 'fa fa-fonticons' 
 );
-

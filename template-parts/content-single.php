@@ -10,22 +10,10 @@
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="row">
-		<?php if (has_post_thumbnail(get_the_ID())):?>
-			<div class="col-md-4">
-				<?php the_post_thumbnail();?>
-			</div>
-			<div class="col-md-8">
-		<?php else:?>
-			<div class="col-md-12">
-		<?php endif;?>
+		<div class="col-md-12">
 			<header class="entry-header">
 				<?php
-					if ( is_single() ) {
-						the_title( '<h1 class="entry-title">', '</h1>' );
-					} else {
-						the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-					}
-		
+				the_title( '<h1 class="entry-title">', '</h1>' );
 				if ( 'post' === get_post_type() ) : ?>
 				<div class="entry-meta">
 					<?php lounge_act_posted_on(); ?>
@@ -35,25 +23,22 @@
 			</header><!-- .entry-header -->
 		
 			<div class="entry-content">
+				<?php if (has_post_thumbnail(get_the_ID())):?>
+					<div class="post-thumbnail">
+						<?php the_post_thumbnail();?>
+					</div>
+				<?php endif;?>
 				<?php 
-				if (is_home() || is_front_page()):
-					the_excerpt( sprintf(
-						/* translators: %s: Name of current post. */
-						wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'lounge-act' ), array( 'span' => array( 'class' => array() ) ) ),
-						the_title( '<span class="screen-reader-text">"', '"</span>', false )
-					) );
-				else:
 					the_content( sprintf(
 						/* translators: %s: Name of current post. */
 						wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'lounge-act' ), array( 'span' => array( 'class' => array() ) ) ),
 						the_title( '<span class="screen-reader-text">"', '"</span>', false )
 						) );
-				endif;
 		
-				wp_link_pages( array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'lounge-act' ),
-					'after'  => '</div>',
-				) );
+					wp_link_pages( array(
+						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'lounge-act' ),
+						'after'  => '</div>',
+					) );
 				?>
 			</div><!-- .entry-content -->
 		

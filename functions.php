@@ -6,6 +6,10 @@
  *
  * @package Lounge_Act
  */
+global $loungeact_db_version;
+global $loungeact_fa_version;
+$loungeact_db_version = '1.0.0';
+$loungeact_fa_version = '4.5.1';
 $version = '1.0.0';
 
 if (! function_exists ( 'loungeact_setup' )) :
@@ -78,6 +82,9 @@ if (! function_exists ( 'loungeact_setup' )) :
 				'default-image' => '' 
 		) ) );
 	}
+
+
+
 
 
 
@@ -170,8 +177,8 @@ if (! function_exists ( 'loungeact_public_scripts' )) :
 		// ), '3.3.5', true );
 		// Sticky-kit
 		wp_enqueue_script ( 'loungeact-stickykit-script', get_template_directory_uri () . '/assets/sticky-kit/1.1.2/jquery.sticky-kit.min.js', array (
-				'jquery'
-		 ), '1.1.2', true );
+				'jquery' 
+		), '1.1.2', true );
 		
 		wp_enqueue_style ( 'loungeact-swiper-style', get_template_directory_uri () . '/assets/swiper/css/swiper.css' );
 		wp_enqueue_script ( 'loungeact-swiper-script', get_template_directory_uri () . '/assets/swiper/js/swiper.jquery.js', array (
@@ -208,6 +215,9 @@ if (! function_exists ( 'loungeact_public_scripts' )) :
 
 
 
+
+
+
 endif;
 add_action ( 'wp_enqueue_scripts', 'loungeact_public_scripts' );
 
@@ -233,14 +243,14 @@ if (! function_exists ( 'loungeact_admin_scripts' )) {
 		
 		// Wp Media
 		wp_enqueue_media ();
-		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_style ( 'wp-color-picker' );
 		
 		// Wp jQuery UI
 		wp_enqueue_script ( 'jquery-ui-core' );
 		wp_enqueue_script ( 'jquery-ui-accordion' );
 		
 		// Theme admin styles and scripts
-		//TODO:REMOVE
+		// TODO:REMOVE
 		wp_register_style ( 'loungeact-admin-css', get_template_directory_uri () . '/assets/admin/css/loungeact-admin.css' );
 		wp_enqueue_style ( 'loungeact-admin-css' );
 		wp_register_style ( 'loungeact-admin-style', get_template_directory_uri () . '/assets/admin/css/admin.css' );
@@ -248,7 +258,7 @@ if (! function_exists ( 'loungeact_admin_scripts' )) {
 		wp_enqueue_script ( 'loungeact-admin-script', get_template_directory_uri () . '/assets/admin/js/loungeact-admin.js', array (
 				'jquery',
 				'loungeact-select2-script',
-				'wp-color-picker'
+				'wp-color-picker' 
 		) );
 		wp_localize_script ( 'loungeact-admin-script', 'ajax_object', array (
 				'ajax_url' => admin_url ( 'admin-ajax.php' ) 
@@ -277,6 +287,9 @@ if (! function_exists ( 'get_loungeact_fontawesome_list' )) :
 
 
 
+
+
+
 endif;
 
 // TODO: logo position like layerswp
@@ -285,6 +298,9 @@ if (! function_exists ( 'get_loungeact_theme' )) :
 	function get_loungeact_theme() {
 		return new Lounge_Act_Theme ();
 	}
+
+
+
 endif;
 
 /**
@@ -360,12 +376,11 @@ function hide_meta_lock($hidden, $screen) {
 				'commentstatusdiv',
 				'commentsdiv',
 				'authordiv',
-				'revisionsdiv'
+				'revisionsdiv' 
 		);
 		// removed 'postexcerpt',
-		return $hidden;
+	return $hidden;
 }
-
 function wpse_footer_db_queries() {
 	echo '<h2> ' . get_num_queries () . ' queries in ' . timer_stop ( 0 ) . ' seconds. </h2>' . PHP_EOL;
 	
@@ -383,7 +398,69 @@ function wpse_footer_db_queries() {
 	printf ( '<style>pre{white-space:pre-wrap !important}</style>
         <div class="%1$s"><p><b>%2$s Queries</b></p>%3$s</div>', __FUNCTION__, $wpdb->num_queries, $list );
 }
-add_action ( 'wp_footer', 'wpse_footer_db_queries' );
+// add_action ( 'wp_footer', 'wpse_footer_db_queries' );
 
 
+/*
+//Create the table to store FontAwesome fonts
+function loungeact_fa_table() {
+	global $wpdb;
+	global $loungeact_db_version;
+	
+	$table_name = $wpdb->prefix . 'loungeact_fa';
+	
+	$charset_collate = $wpdb->get_charset_collate ();
+	
+	$sql = "CREATE TABLE $table_name (
+	id mediumint(9) NOT NULL AUTO_INCREMENT,
+	time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+	fa_class tinytext NOT NULL,
+	label tinytext NOT NULL,
+	UNIQUE KEY id (id)
+	) $charset_collate;";
+	
+	require_once (ABSPATH . 'wp-admin/includes/upgrade.php');
+	dbDelta ( $sql );
+	
+	add_option ( 'loungeact_db_version', $loungeact_db_version );
+}
+
+
+//Add FontAwesome fonts to the table
+function loungeact_fa_install_data() {
+	global $wpdb;
+	global $loungeact_fa_version;
+	
+	$table_name = $wpdb->prefix . 'loungeact_fa';
+	
+	$installed_ver = get_option ( 'loungeact_fa_version' );
+	
+	if (! $installed_ver || $installed_ver != $loungeact_fa_version) {
+		$wpdb->query('TRUNCATE TABLE ' . $table_name);
+		foreach ( get_loungeact_fontawesome_list () as $label => $css_class ) {
+			error_log ( "execute insert " . $label );
+			$wpdb->insert ( $table_name, array (
+					'time' => current_time ( 'mysql' ),
+					'fa_class' => $css_class,
+					'label' => $label 
+			) );
+		}
+		
+		update_option ( 'loungeact_fa_version', $loungeact_fa_version );
+	}
+}
+
+function loungeact_update_db_check() {
+	global $loungeact_db_version;
+	global $loungeact_fa_version;
+	if ( get_site_option( 'loungeact_db_version' ) != $loungeact_db_version ) {
+		loungeact_fa_table();
+	}
+	
+	if ( get_site_option( 'loungeact_fa_version' ) != $loungeact_fa_version ) {
+		loungeact_fa_install_data();
+	}
+}
+add_action( 'after_switch_theme', 'loungeact_update_db_check' );
+*/
 

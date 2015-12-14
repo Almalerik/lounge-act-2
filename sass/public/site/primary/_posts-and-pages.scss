@@ -4,6 +4,8 @@
 
 .hentry {
 	margin: 0 0 1.5em;
+    border-bottom: 1px solid $color__hentry-border;
+    padding-bottom: 1.5em;
 }
 
 .byline,
@@ -20,6 +22,31 @@
 .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
+}
+
+.entry-title {
+	border-bottom: 1px solid $color__entry-title-border;
+	width: 80%;
+	
+	a:after {
+		content : '';
+		height: 1px;
+		border-bottom: solid 1px red;
+		margin-bottom: -1px;
+		display: block;
+		width: 50%;
+	}
+}
+
+.entry-meta {
+	font-size: $font__entry-meta-size;
+	color: $color_entry-meta;
+	
+	.posted-on-icon,
+	.byline-icon {
+		margin-right: 5px;
+	}
+
 }
 
 .page-links {
