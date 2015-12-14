@@ -11,10 +11,11 @@
  *
  * @package Lounge_Act
  */
+$loungeact = get_loungeact_theme ();
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area <?php echo $loungeact -> get_content_class(); ?>">
 		<main id="main" class="site-main" role="main">
 
 		<?php
@@ -52,5 +53,4 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();
