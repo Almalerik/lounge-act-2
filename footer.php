@@ -9,7 +9,15 @@
  * @package Lounge_Act
  */
 
+$loungeact = get_loungeact_theme ();
+
 ?>
+
+		<?php if ( $loungeact -> get_sidebar_class('sidebar-right') ): ?>
+		<div class="<?php echo $loungeact -> get_sidebar_class('sidebar-right'); ?>">
+			<?php dynamic_sidebar('sidebar-right'); ?>
+		</div>
+		<?php endif;?>
 
 	</div><!-- #content -->
 
