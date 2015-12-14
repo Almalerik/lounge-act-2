@@ -158,6 +158,9 @@ img {
   max-width: 100%;
   /* Adhere to container width. */ }
 
+a:hover, a:focus {
+  text-decoration: none; }
+
 table {
   margin: 0 0 1.5em;
   width: 100%; }
@@ -364,8 +367,11 @@ a {
     right: 60%;
     margin-top: -1px;
     margin-left: -1px; }
-.navbar-default .loungeact-navbar-mobile .navbar-nav {
-  margin: 7.5px 0; }
+.navbar-default .loungeact-navbar-mobile {
+  background-color: #ffffff;
+  margin: 0 -15px; }
+  .navbar-default .loungeact-navbar-mobile .navbar-nav {
+    margin: 7.5px 0; }
 
 .navbar-default.navbar-left .menu-item-has-children > .sub-menu > .menu-item-has-children .sub-menu {
   left: 60%; }
@@ -544,6 +550,14 @@ a {
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
+
+.entry-footer > span {
+  display: block; }
+
+.tags-links > span {
+  margin-right: 5px; }
+  .tags-links > span a {
+    color: #ffffff; }
 
 /*--------------------------------------------------------------
 ## Asides
