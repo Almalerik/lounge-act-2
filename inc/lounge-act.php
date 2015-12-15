@@ -45,6 +45,8 @@ class Lounge_Act_Theme {
 			
 			'homepage_features_show' => true,
 			
+			'blog_container_max_width' => '1200px',
+			
 			// TODO: DA VERIFICARE
 			
 			"header_margin_bottom" => "0px",

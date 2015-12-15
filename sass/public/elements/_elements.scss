@@ -1,6 +1,5 @@
 html {
 	box-sizing: border-box;
-	font-size: 16px;
 }
 
 *,
@@ -41,3 +40,5 @@ a:hover, a:focus {
 }
 
 @import "tables";
+
+@import "buttons";

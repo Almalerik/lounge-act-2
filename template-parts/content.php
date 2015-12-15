@@ -9,12 +9,18 @@
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="row">
-		<?php if (has_post_thumbnail(get_the_ID())):?>
-			<div class="col-md-4">
-				<?php the_post_thumbnail();?>
-			</div>
-			<div class="col-md-8">
+	<div class="row loungeact-article-row">
+		<?php 
+		if (has_post_thumbnail(get_the_ID())):
+			$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'large');
+		?>
+			<div class="col-md-4 loungeact-img-preview vcenter">
+
+				<a href="<?php echo $large_image_url[0]; ?>" title="<?php the_title_attribute('echo=0');?>" >
+					<?php echo get_the_post_thumbnail(get_the_ID(), 'loungeact-medium-cropped'); ?>
+				</a>
+			</div><!--
+			--><div class="col-md-8 vcenter">
 		<?php else:?>
 			<div class="col-md-12">
 		<?php endif;?>
@@ -23,20 +29,14 @@
 					if ( is_single() ) {
 						the_title( '<h1 class="entry-title">', '</h1>' );
 					} else {
-						$sticky_icon = '';
-						if (is_sticky()) {
-							$sticky_icon = '<div class="sticky-icon-wrapper"><i class="fa fa-thumb-tack sticky-icon"></i></div>';
-						}
-						
-						the_title( '<h2 class="entry-title">' . $sticky_icon . '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+						the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 					}
-		
-				if ( 'post' === get_post_type() ) : ?>
+				?>
+				<?php if ( 'post' === get_post_type() ) : ?>
 				<div class="entry-meta">
 					<?php lounge_act_posted_on(); ?>
 				</div><!-- .entry-meta -->
-				<?php
-				endif; ?>
+				<?php endif; ?>
 			</header><!-- .entry-header -->
 		
 			<div class="entry-content">

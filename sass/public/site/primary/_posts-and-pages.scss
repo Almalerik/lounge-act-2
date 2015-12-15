@@ -1,11 +1,15 @@
-.sticky {
-	display: block;
+.loungeact-article-row {
+	text-align: center;
+	.entry-header,
+	.entry-meta,
+	.entry-content,
+	.entry-footer {
+		text-align: left;
+	}
 }
 
 .hentry {
-	margin: 0 0 1.5em;
-    border-bottom: 1px solid $color__hentry-border;
-    padding-bottom: 1.5em;
+    padding: 1em 0;
 }
 
 .byline,
@@ -25,21 +29,29 @@
 }
 
 .entry-title {
-	border-bottom: 1px solid $color__entry-title-border;
+	border-bottom: 1px solid $color__entry-title-bottom-border;
 	width: 80%;
-	
-	a:after {
+    margin-top: 0.4em;
+    
+	&:after {
 		content : '';
-		height: 1px;
-		border-bottom: solid 1px red;
+		border-bottom: solid 1px $color__entry-title-decoration;
 		margin-bottom: -1px;
 		display: block;
 		width: 50%;
 	}
+	
+	a{
+		color: $color__entry-title;
+		&:visited{
+			color: $color__entry-title;
+		}
+	}
+	
 }
 
 .entry-meta {
-	font-size: $font__entry-meta-size;
+	@include font-size(0.85);
 	color: $color_entry-meta;
 	
 	.posted-on-icon,
@@ -47,26 +59,12 @@
 	.categories-icon {
 		margin-right: 5px;
 	}
+	
+	a:link,
+	a:visited {
+		color: $color_entry-meta;
+	}
 
-}
-
-.sticky-icon-wrapper {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    text-align: center;
-    background-color: red;
-    border-radius: 50%;
-    vertical-align: bottom;
-    margin-bottom: 2px;
-    margin-right: 10px;
-    
-    .sticky-icon {
-		font-size: 0.6em;
-		color: white;
-		padding-bottom: 7px;
-		vertical-align: middle;
-    }
 }
 
 .page-links {
@@ -74,13 +72,39 @@
 	margin: 0 0 1.5em;
 }
 
-.entry-footer > span {
-	display: block;
+.entry-footer {
+	@include font-size(0.9);
+	
+	.edit-link,
+	.comments-link {
+		display: block;
+	}
+	
+	.edit-link {
+		float: right;
+		
+		a,
+		a:visisted,
+		a:hover {
+			color: #555555;
+		}
+	}
 }
 
-.tags-links > span{
-	margin-right: 5px;
+.tags-links .label {
+	font-weight: normal;
+	font-size: 85%;
+	
 	a {
 		color: $color__tags-links;
 	}
+}
+
+.loungeact-img-preview {
+    text-align: center;
+    
+    img {
+   	    border: 1px solid #cccccc;
+    	padding: 5px;
+    }
 }

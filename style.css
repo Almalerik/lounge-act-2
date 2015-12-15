@@ -51,6 +51,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+html {
+  font-size: 15px; }
+
 body,
 button,
 input,
@@ -58,7 +61,7 @@ select,
 textarea {
   color: #404040;
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-size: 1rem;
   line-height: 1.5; }
 
@@ -80,7 +83,7 @@ address {
 pre {
   background: #eee;
   font-family: "Courier 10 Pitch", Courier, monospace;
-  font-size: 15px;
+  font-size: 14.0625px;
   font-size: 0.9375rem;
   line-height: 1.6;
   margin-bottom: 1.6em;
@@ -90,7 +93,7 @@ pre {
 
 code, kbd, tt, var {
   font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  font-size: 15px;
+  font-size: 14.0625px;
   font-size: 0.9375rem; }
 
 abbr, acronym {
@@ -108,8 +111,7 @@ big {
 # Elements
 --------------------------------------------------------------*/
 html {
-  box-sizing: border-box;
-  font-size: 16px; }
+  box-sizing: border-box; }
 
 *,
 *:before,
@@ -178,7 +180,7 @@ input[type="submit"] {
   background: #e6e6e6;
   /*box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);*/
   color: rgba(0, 0, 0, 0.8);
-  font-size: 12px;
+  font-size: 11.25px;
   font-size: 0.75rem;
   line-height: 1;
   padding: .6em 1em .4em;
@@ -238,11 +240,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue; }
+  color: #555555; }
   a:visited {
-    color: purple; }
+    color: #555555; }
   a:hover, a:focus, a:active {
-    color: midnightblue; }
+    color: #333333; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -426,7 +428,7 @@ a {
     clip: auto !important;
     color: #21759b;
     display: block;
-    font-size: 14px;
+    font-size: 13.125px;
     font-size: 0.875rem;
     font-weight: bold;
     height: auto;
@@ -461,6 +463,20 @@ a {
   display: block;
   margin-left: auto;
   margin-right: auto; }
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
+
+.lougeact-table-cell {
+  float: none;
+  display: table-cell;
+  vertical-align: middle; }
+
+.fa {
+  margin-left: 5px;
+  margin-right: 5px; }
 
 /*--------------------------------------------------------------
 # Clearings
@@ -531,13 +547,16 @@ a {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-.sticky {
-  display: block; }
+.loungeact-article-row {
+  text-align: center; }
+  .loungeact-article-row .entry-header,
+  .loungeact-article-row .entry-meta,
+  .loungeact-article-row .entry-content,
+  .loungeact-article-row .entry-footer {
+    text-align: left; }
 
 .hentry {
-  margin: 0 0 1.5em;
-  border-bottom: 1px solid #dedede;
-  padding-bottom: 1.5em; }
+  padding: 1em 0; }
 
 .byline,
 .updated:not(.published) {
@@ -554,50 +573,59 @@ a {
 
 .entry-title {
   border-bottom: 1px solid #dedede;
-  width: 80%; }
-  .entry-title a:after {
+  width: 80%;
+  margin-top: 0.4em; }
+  .entry-title:after {
     content: '';
-    height: 1px;
-    border-bottom: solid 1px red;
+    border-bottom: solid 1px #CC2A41;
     margin-bottom: -1px;
     display: block;
     width: 50%; }
+  .entry-title a {
+    color: #333333; }
+    .entry-title a:visited {
+      color: #333333; }
 
 .entry-meta {
-  font-size: 90%;
-  color: #555555; }
+  font-size: 12.75px;
+  font-size: 0.85rem;
+  color: #888888; }
   .entry-meta .posted-on-icon,
   .entry-meta .byline-icon,
   .entry-meta .categories-icon {
     margin-right: 5px; }
-
-.sticky-icon-wrapper {
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  text-align: center;
-  background-color: red;
-  border-radius: 50%;
-  vertical-align: bottom;
-  margin-bottom: 2px;
-  margin-right: 10px; }
-  .sticky-icon-wrapper .sticky-icon {
-    font-size: 0.6em;
-    color: white;
-    padding-bottom: 7px;
-    vertical-align: middle; }
+  .entry-meta a:link,
+  .entry-meta a:visited {
+    color: #888888; }
 
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
 
-.entry-footer > span {
-  display: block; }
+.entry-footer {
+  font-size: 13.5px;
+  font-size: 0.9rem; }
+  .entry-footer .edit-link,
+  .entry-footer .comments-link {
+    display: block; }
+  .entry-footer .edit-link {
+    float: right; }
+    .entry-footer .edit-link a,
+    .entry-footer .edit-link a:visisted,
+    .entry-footer .edit-link a:hover {
+      color: #555555; }
 
-.tags-links > span {
-  margin-right: 5px; }
-  .tags-links > span a {
+.tags-links .label {
+  font-weight: normal;
+  font-size: 85%; }
+  .tags-links .label a {
     color: #ffffff; }
+
+.loungeact-img-preview {
+  text-align: center; }
+  .loungeact-img-preview img {
+    border: 1px solid #cccccc;
+    padding: 5px; }
 
 /*--------------------------------------------------------------
 ## Asides

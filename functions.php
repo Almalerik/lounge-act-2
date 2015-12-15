@@ -464,3 +464,5 @@ function loungeact_update_db_check() {
 add_action( 'after_switch_theme', 'loungeact_update_db_check' );
 */
 
+
+add_image_size( 'loungeact-medium-cropped', 330, 275, true );

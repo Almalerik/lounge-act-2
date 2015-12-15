@@ -25,12 +25,12 @@ function lounge_act_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( '%s |', 'post date', 'loungeact' ),
+		esc_html_x( '%s / ', 'post date', 'loungeact' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><i class="fa fa-calendar posted-on-icon"></i>' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
-		esc_html_x( ' %s | ', 'post author', 'loungeact' ),
+		esc_html_x( ' %s / ', 'post author', 'loungeact' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . get_avatar( get_the_author_meta( 'ID' ), 16, '', '', array('class' => 'img-circle byline-icon') ) .  esc_html( get_the_author() ) . '</a></span>'
 	);
 	
@@ -40,11 +40,11 @@ function lounge_act_posted_on() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'loungeact' ) );
 		if ( $categories_list && lounge_act_categorized_blog() ) {
-			$categories = '<span class="cat-links"><i class="fa fa-tag categories-icon"></i>' .  $categories_list . '</span>'; // WPCS: XSS OK.
+			$categories = '<span class="cat-links"><i class="fa fa-folder-open categories-icon"></i>' .  $categories_list . '</span>'; // WPCS: XSS OK.
 		}
 	}
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>' . $categories; // WPCS: XSS OK.
+	echo '</span><span class="byline"> ' . $byline . '<span class="posted-on">' . $posted_on . '</span>' . $categories; // WPCS: XSS OK.
 
 }
 endif;
@@ -56,9 +56,9 @@ if ( ! function_exists( 'lounge_act_entry_footer' ) ) :
 function lounge_act_entry_footer() {
 	// Hide tag text for pages.
 	if ( 'post' === get_post_type() ) {
-		$tags_list = get_the_tag_list( '<span class="label label-default">', '</span><span class="label label-default">', '</span>' );
+		$tags_list = get_the_tag_list( '<li><span class="label label-default">', '</span></li><li><span class="label label-default">', '</span></li>' );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . $tags_list . '</span>' ); // WPCS: XSS OK.
+			printf( '<ul class="tags-links list-inline">' . $tags_list . '</ul>' ); // WPCS: XSS OK.
 		}
 	}
 
@@ -67,14 +67,14 @@ function lounge_act_entry_footer() {
 		comments_popup_link( esc_html__( 'Leave a comment', 'loungeact' ), esc_html__( '1 Comment', 'loungeact' ), esc_html__( '% Comments', 'loungeact' ) );
 		echo '</span>';
 	}
-
+	
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
 			esc_html__( 'Edit %s', 'loungeact' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
-		'<span class="edit-link">',
+		'<span class="edit-link btn btn-default"><i class="fa fa-pencil"></i>',
 		'</span>'
 	);
 }

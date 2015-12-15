@@ -16,8 +16,7 @@ $loungeact = get_loungeact_theme ();
 get_header ();
 ?>
 <div id="primary" class="content-area">
-	<main id="main" class="site-main" role="main">
-	
+
 		<div class="row lougeact-features-sidebar">
 			<?php dynamic_sidebar('homepage-features'); ?>
 		</div>
@@ -26,6 +25,8 @@ get_header ();
 			<?php dynamic_sidebar('homepage-highlights'); ?>
 		</div>
 		
+	<main id="main" class="site-main" role="main" style="max-width: <?php echo $loungeact -> get_setting("blog_container_max_width"); ?>; margin: 0 auto;">
+	
 				<?php
 		if ( have_posts() ) :
 
@@ -45,6 +46,7 @@ get_header ();
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
+				
 				get_template_part( 'template-parts/content', get_post_format() );
 
 			endwhile;
@@ -52,9 +54,10 @@ get_header ();
 			the_posts_navigation();
 
 		else :
-
+			
+		echo '<div style="max-width: '. $loungeact -> get_setting("blog_container_max_width") . '; margin: 0 auto;">';
 			get_template_part( 'template-parts/content', 'none' );
-
+			echo '</div>';
 		endif; ?>
 		
 	</main>

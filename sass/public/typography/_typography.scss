@@ -1,10 +1,14 @@
+html {
+	font-size: 15px;
+}
+
 body,
 button,
 input,
 select,
 textarea {
 	color: $color__text-main;
-	font-family: $font__main;
+	font-family: $font__main_family;
 	@include font-size(1);
 	line-height: $font__line-height-body;
 }
@@ -12,3 +16,4 @@ textarea {
 @import "headings";
 
 @import "copy";
+
