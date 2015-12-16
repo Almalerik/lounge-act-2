@@ -16,14 +16,46 @@ $loungeact = get_loungeact_theme ();
 get_header ();
 ?>
 <div id="primary" class="content-area">
-
+	
+	<?php if ($loungeact -> get_setting("homepage_features_show") ):?>
+		<!-- lougeact-features-sidebar -->
 		<div class="row lougeact-features-sidebar">
-			<?php dynamic_sidebar('homepage-features'); ?>
+			<div class="col-md-12">
+				<?php if ($loungeact -> get_setting("homepage_features_title") ):?>
+				<h2 class="lougeact-features-title">
+					<?php echo $loungeact -> get_setting("homepage_features_title");?>
+					<span class="lougeact-decoration-line">
+						<span>
+							<?php echo $loungeact -> get_setting("homepage_features_subtitle");?>
+						</span>
+					</span>
+				</h2>
+				<?php endif;?>
+				<ul class="list-inline text-center">
+					<?php dynamic_sidebar('homepage-features'); ?>
+				</ul>
+			</div>
 		</div>
-		
+		<!-- #lougeact-features-sidebar -->
+	<?php endif;?>
+	
+	<?php if ($loungeact -> get_setting("homepage_highlights_show") ):?>
+		<!-- lougeact-highlights-sidebar -->
 		<div class="lougeact-highlights-sidebar">
+			<?php if ($loungeact -> get_setting("homepage_highlights_title") ):?>
+			<h2 class="lougeact-highlights-title">
+				<?php echo $loungeact -> get_setting("homepage_highlights_title");?>
+				<span class="lougeact-decoration-line">
+					<span>
+						<?php echo $loungeact -> get_setting("homepage_highlights_subtitle");?>
+					</span>
+				</span>
+			</h2>
+			<?php endif;?>
 			<?php dynamic_sidebar('homepage-highlights'); ?>
 		</div>
+		<!-- #lougeact-highlights-sidebar -->
+	<?php endif;?>	
 		
 	<main id="main" class="site-main" role="main" style="max-width: <?php echo $loungeact -> get_setting("blog_container_max_width"); ?>; margin: 0 auto;">
 	

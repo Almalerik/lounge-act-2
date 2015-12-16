@@ -347,7 +347,8 @@ function loungeact_customize_register($wp_customize) {
 			'section' => 'loungeact_slider',
 			'settings' => 'loungeact[slider_only_in_homepage]',
 			'type' => 'checkbox',
-			'priority' => 60
+			'priority' => 60,
+			'active_callback' => 'loungeact_slider_selected'
 	) );
 	
 	/*
@@ -444,14 +445,14 @@ function loungeact_customize_register($wp_customize) {
 	) ) );
 	
 	/*
-	 * ============== HOMEPAGE ==============
+	 * ============== HOMEPAGE FEATURES ==============
 	 */
 	$wp_customize->add_panel ( 'loungeact_homepage_features', array (
 			'title' => esc_html__ ( 'Homepage Features', 'loungeact' ) 
 	) );
 	
 	$wp_customize->add_section ( 'loungeact_homepage_features_option', array (
-			'title' => esc_html__ ( 'Options', 'loungeact' ),
+			'title' => esc_html__ ( 'Settings' ),
 			'panel' => 'loungeact_homepage_features',
 			'active_callback' => 'is_front_page',
 			'priority' => 10 
@@ -462,16 +463,92 @@ function loungeact_customize_register($wp_customize) {
 			'section' => 'loungeact_homepage_features_option',
 			'priority' => 10 
 	) ) );
+	// Show
 	$wp_customize->add_setting ( 'loungeact[homepage_features_show]', array (
 			'default' => $loungeact->get_setting ( 'homepage_features_show' ),
 			'type' => 'option' 
 	) );
 	$wp_customize->add_control ( 'loungeact_homepage_features_show', array (
-			'label' => esc_html__ ( 'Show', 'loungeact' ),
+			'label' => esc_html__ ( 'Show' ),
 			'section' => 'loungeact_homepage_features_option',
 			'settings' => 'loungeact[homepage_features_show]',
 			'type' => 'checkbox',
 			'priority' => 20 
+	) );
+	// Title
+	$wp_customize->add_setting ( 'loungeact[homepage_features_title]', array (
+			'default' => $loungeact->get_setting ( 'homepage_features_title' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( 'loungeact_homepage_features_title', array (
+			'label' => esc_html__ ( 'Title' ),
+			'section' => 'loungeact_homepage_features_option',
+			'settings' => 'loungeact[homepage_features_title]',
+			'priority' => 30
+	) );
+	// Subtitle
+	$wp_customize->add_setting ( 'loungeact[homepage_features_subtitle]', array (
+			'default' => $loungeact->get_setting ( 'homepage_features_subtitle' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( 'loungeact_homepage_features_subtitle', array (
+			'label' => esc_html__ ( 'Description' ),
+			'section' => 'loungeact_homepage_features_option',
+			'settings' => 'loungeact[homepage_features_subtitle]',
+			'priority' => 30
+	) );
+	
+	/*
+	 * ============== HOMEPAGE HIGHLIGHTS ==============
+	 */
+	$wp_customize->add_panel ( 'loungeact_homepage_highlights', array (
+			'title' => esc_html__ ( 'Homepage Highlights', 'loungeact' )
+	) );
+	$wp_customize->add_section ( 'loungeact_homepage_highlights_option', array (
+			'title' => esc_html__ ( 'Settings' ),
+			'panel' => 'loungeact_homepage_highlights',
+			'active_callback' => 'is_front_page',
+			'priority' => 10
+	) );
+	// Helper
+	$wp_customize->add_control ( new Fixed_Text_Custom_Control ( $wp_customize, 'loungeact_homepage_features_option_helper', array (
+			'description' => __ ( 'To add a "Loungeact Highlights" widget <a href="#" class="button lougeact-goto-swh-highlights">click here</a>', 'loungeact' ),
+			'section' => 'loungeact_homepage_highlights_option',
+			'priority' => 10
+	) ) );
+	// Show
+	$wp_customize->add_setting ( 'loungeact[homepage_highlights_show]', array (
+			'default' => $loungeact->get_setting ( 'homepage_highlights_show' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( 'loungeact_homepage_highlights_show', array (
+			'label' => esc_html__ ( 'Show' ),
+			'section' => 'loungeact_homepage_highlights_option',
+			'settings' => 'loungeact[homepage_highlights_show]',
+			'type' => 'checkbox',
+			'priority' => 20
+	) );
+	// Title
+	$wp_customize->add_setting ( 'loungeact[homepage_highlights_title]', array (
+			'default' => $loungeact->get_setting ( 'homepage_highlights_title' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( 'loungeact_homepage_highlights_title', array (
+			'label' => esc_html__ ( 'Title' ),
+			'section' => 'loungeact_homepage_highlights_option',
+			'settings' => 'loungeact[homepage_highlights_title]',
+			'priority' => 30
+	) );
+	// Subtitle
+	$wp_customize->add_setting ( 'loungeact[homepage_highlights_subtitle]', array (
+			'default' => $loungeact->get_setting ( 'homepage_highlights_subtitle' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( 'loungeact_homepage_highlights_subtitle', array (
+			'label' => esc_html__ ( 'Description' ),
+			'section' => 'loungeact_homepage_highlights_option',
+			'settings' => 'loungeact[homepage_highlights_subtitle]',
+			'priority' => 30
 	) );
 }
 add_action ( 'customize_register', 'loungeact_customize_register' );

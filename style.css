@@ -22,7 +22,6 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-# Normalize
 # Typography
 # Elements
 # Forms
@@ -43,11 +42,62 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Galleries
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-# Normalize
+# Helpers class
 --------------------------------------------------------------*/
-/*
-@import "normalize";
-*/
+.no-border-radius {
+  border-radius: 0 !important; }
+
+.lougeact-decoration-line {
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  line-height: .7em; }
+  .lougeact-decoration-line span {
+    display: inline-block;
+    padding: 0 15px;
+    position: relative;
+    font-size: .5em;
+    font-weight: normal; }
+    .lougeact-decoration-line span:before, .lougeact-decoration-line span:after {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      content: "";
+      display: block;
+      height: 5px;
+      position: absolute;
+      top: 50%;
+      width: 100%; }
+    .lougeact-decoration-line span:before {
+      right: 100%; }
+    .lougeact-decoration-line span:after {
+      left: 100%; }
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none; }
+
+.lougeact-table-cell {
+  float: none;
+  display: table-cell;
+  vertical-align: middle; }
+
+.lougeact-table.row {
+  display: table; }
+  .lougeact-table.row [class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top; }
+
+.background-fullpage {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: inherit;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
@@ -464,20 +514,6 @@ a {
   margin-left: auto;
   margin-right: auto; }
 
-.vcenter {
-  display: inline-block;
-  vertical-align: middle;
-  float: none; }
-
-.lougeact-table-cell {
-  float: none;
-  display: table-cell;
-  vertical-align: middle; }
-
-.fa {
-  margin-left: 5px;
-  margin-right: 5px; }
-
 /*--------------------------------------------------------------
 # Clearings
 --------------------------------------------------------------*/
@@ -517,14 +553,49 @@ a {
 /*--------------------------------------------------------------
 ## Features
 --------------------------------------------------------------*/
+.lougeact-features-sidebar .lougeact-features-title {
+  position: relative;
+  text-align: center;
+  font-weight: bold; }
 .lougeact-features-sidebar .widget_lougeact_feature_widget {
-  text-align: center; }
-.lougeact-features-sidebar .widget-icon {
-  font-size: 70px; }
+  margin-top: 20px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: top;
+  width: 200px; }
+.lougeact-features-sidebar .loungeact-feature-image-wrapper {
+  height: 130px;
+  width: 130px;
+  position: relative;
+  line-height: 130px;
+  background-color: #ddd;
+  border-radius: 50%;
+  font-size: 70px;
+  margin: 0 auto; }
+  .lougeact-features-sidebar .loungeact-feature-image-wrapper img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    /* Half the height */
+    margin-left: -35px;
+    /* Half the width */ }
 
 /*--------------------------------------------------------------
 ## Highlight
 --------------------------------------------------------------*/
+.lougeact-highlights-sidebar .lougeact-highlights-title {
+  position: relative;
+  text-align: center; }
+.lougeact-highlights-sidebar .loungeact-highlight-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
 .lougeact-highlights-sidebar h2 {
   text-transform: uppercase;
   font-weight: bold; }
@@ -569,12 +640,14 @@ a {
 .page-content,
 .entry-content,
 .entry-summary {
-  margin: 1.5em 0 0; }
+  margin: 1.5em 0 0;
+  word-break: break-word; }
 
 .entry-title {
   border-bottom: 1px solid #dedede;
   width: 80%;
-  margin-top: 0.4em; }
+  margin-top: 0.4em;
+  word-break: break-word; }
   .entry-title:after {
     content: '';
     border-bottom: solid 1px #CC2A41;
@@ -592,8 +665,12 @@ a {
   color: #888888; }
   .entry-meta .posted-on-icon,
   .entry-meta .byline-icon,
-  .entry-meta .categories-icon {
+  .entry-meta .categories-icon,
+  .entry-meta .edit-link-icon {
     margin-right: 5px; }
+  .entry-meta .edit-link {
+    display: block;
+    margin: 5px 0 0 0; }
   .entry-meta a:link,
   .entry-meta a:visited {
     color: #888888; }
@@ -626,6 +703,9 @@ a {
   .loungeact-img-preview img {
     border: 1px solid #cccccc;
     padding: 5px; }
+
+.tags-links.list-inline li {
+  padding: 1px 5px; }
 
 /*--------------------------------------------------------------
 ## Asides

@@ -1,0 +1,39 @@
+.lougeact-features-sidebar {
+
+	.lougeact-features-title {
+		position: relative;
+  		text-align: center;
+  		font-weight: bold;
+	}
+	
+	.widget_lougeact_feature_widget {
+		margin-top: 20px;
+		text-align: center;
+		margin-left: 10px;
+		margin-right: 10px;
+		vertical-align: top;
+		width: 200px;
+	}
+	
+	.loungeact-feature-image-wrapper {
+		height: 130px;
+	    width: 130px;
+	    position: relative;
+	    line-height: 130px;
+	    background-color: #ddd;
+	    border-radius: 50%;
+	    font-size: 70px;
+	    margin: 0 auto;
+	    
+	    img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 70px;
+			height: 70px;
+			margin-top: -35px; /* Half the height */
+			margin-left: -35px; /* Half the width */
+	    }
+	}
+
+}

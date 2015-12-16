@@ -42,11 +42,18 @@ class Lougeact_Feature_Widget extends WP_Widget {
 	 */
 	public function widget($args, $instance) {
 		
+		$instance["title_text"] = $instance['title'];
 		if ( ! empty( $instance['title'] ) ) {
 			$instance['title'] = $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		
-		$args ['before_widget'] = str_replace('class="', 'class="col-sm-3 placeholder ', $args ['before_widget']);
+		$args ['before_widget'] = str_replace('class="', 'class="placeholder ', $args ['before_widget']);
+		
+		//Check if image is url od id
+		$img_url_or_id = wp_get_attachment_image_src ($instance["image"]);
+		if ($img_url_or_id) {
+			$instance["image"] = $img_url_or_id[0];
+		}
 		
 		// use a template for the output so that it can easily be overridden by theme
 		// check for template in active theme

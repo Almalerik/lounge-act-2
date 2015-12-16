@@ -26,12 +26,14 @@
 .entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
+	word-break: break-word;
 }
 
 .entry-title {
 	border-bottom: 1px solid $color__entry-title-bottom-border;
 	width: 80%;
     margin-top: 0.4em;
+    word-break: break-word;
     
 	&:after {
 		content : '';
@@ -56,8 +58,14 @@
 	
 	.posted-on-icon,
 	.byline-icon,
-	.categories-icon {
+	.categories-icon,
+	.edit-link-icon {
 		margin-right: 5px;
+	}
+	
+	.edit-link {
+		display: block;
+	    margin: 5px 0 0 0;
 	}
 	
 	a:link,
@@ -107,4 +115,10 @@
    	    border: 1px solid #cccccc;
     	padding: 5px;
     }
+}
+
+.tags-links.list-inline {
+	li {
+		padding: 1px 5px;
+	}
 }

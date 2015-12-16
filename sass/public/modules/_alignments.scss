@@ -14,20 +14,3 @@
 	clear: both;
 	@include center-block;
 }
-
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}
-
-.lougeact-table-cell {
-	float: none;
-	display: table-cell;
-	vertical-align: middle;
-}
-
-.fa {
-	margin-left: 5px;
-	margin-right: 5px;
-}

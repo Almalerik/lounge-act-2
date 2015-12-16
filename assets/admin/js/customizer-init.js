@@ -7,6 +7,9 @@ jQuery(document).ready(function() {
 	// Header widget
 	wp.customize.section('sidebar-widgets-homepage-features').panel('loungeact_homepage_features');
 	wp.customize.section('sidebar-widgets-homepage-features').priority('20');
+	
+	wp.customize.section('sidebar-widgets-homepage-highlights').panel('loungeact_homepage_highlights');
+	wp.customize.section('sidebar-widgets-homepage-highlights').priority('20');
 
 	// //jQuery(wp.customize.control('alcor_container_class_fixed_max_width').container).css("display","none");
 
@@ -42,6 +45,10 @@ jQuery(document).ready(function() {
 	
 	jQuery('body').on('click', '.lougeact-goto-swh-features', function(){
 	    wp.customize.section('sidebar-widgets-homepage-features').focus();
+	});
+	
+	jQuery('body').on('click', '.lougeact-goto-swh-highlights', function(){
+	    wp.customize.section('sidebar-widgets-homepage-highlights').focus();
 	});
 	
 	/*

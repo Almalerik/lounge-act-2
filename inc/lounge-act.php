@@ -44,6 +44,12 @@ class Lounge_Act_Theme {
 			'menu_font_color_hover' => '#333333',
 			
 			'homepage_features_show' => true,
+			'homepage_features_title' => 'FEATURES',
+			'homepage_features_subtitle' => 'Theme Features',
+			
+			'homepage_highlights_show' => true,
+			'homepage_highlights_title' => 'HIGHLIGHTS',
+			'homepage_highlights_subtitle' => 'Theme Highlights',
 			
 			'blog_container_max_width' => '1200px',
 			
@@ -158,21 +164,20 @@ class Lounge_Act_Theme {
 		
 		// HEADER
 		// Simulate header height when fixed-top
-		//if ($this->get_setting ( "header_fixed_top" ) && !$this->get_setting ( "slider_fullscreen" )) {
-			//$result .= $this->generate_css ( ".lougeact-wrapper.loungeact-header-fixed-top", "padding-top", "header_margin_bottom", '', '', false );
-		//}
-		
+		// if ($this->get_setting ( "header_fixed_top" ) && !$this->get_setting ( "slider_fullscreen" )) {
+		// $result .= $this->generate_css ( ".lougeact-wrapper.loungeact-header-fixed-top", "padding-top", "header_margin_bottom", '', '', false );
+		// }
 		
 		// logo
 		$result .= $this->generate_css ( ".lougeact-header .site-logo", "max-height", "logo_max_height", '', '', false );
 		
-		//SLIDER
+		// SLIDER
 		$result .= $this->generate_css ( ".loungeact-banner", "height", "slider_height", '', '', false );
 		$result .= $this->generate_css ( ".loungeact-banner .loungeact-slider-overlay", "background-color", "slide_overlay_opacity", 'rgba(0 , 0 , 0, ', ')', false );
 		
-		//if ($this->get_setting ( "slider_header_inside" )) {
-			//$result .= '.lougeact-header {position: absolute;}';
-		//}
+		// if ($this->get_setting ( "slider_header_inside" )) {
+		// $result .= '.lougeact-header {position: absolute;}';
+		// }
 		
 		if ((is_front_page () && is_home () && $this->get_setting ( "hide_title_in_homepage" ))) {
 			$result .= '.site-title {position: absolute;clip: rect(1px, 1px, 1px, 1px);}';
@@ -183,20 +188,19 @@ class Lounge_Act_Theme {
 		
 		if ($this->get_setting ( "header_background_color" )) {
 			$result .= ".lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity" ) ) ) . ");}\n";
-			$result .= ".loungeact-fullscreen-banner.lougeact-scrolling .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity" ) ) ) . ");}\n";
+			$result .= ".loungeact-fullscreen-banner.lougeact-scrolling .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity" ) ) ) . ");}\n";
 			$result .= ".loungeact-header-inside-banner.lougeact-scrolling .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity" ) ) ) . ");}\n";
 		} else {
 			$result .= ".lougeact-header .navbar-default { background-color: transparent;}";
 			$result .= ".loungeact-fullscreen-banner.lougeact-scrolling .navbar-default { background-color: transparent;}";
 			$result .= ".loungeact-header-inside-banner.lougeact-scrolling .navbar-default { background-color: transparent;}";
 		}
-		//SubMenu bg color
-		//$result .= ".lougeact-header .loungeact-navbar-mobile { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), 1)) . ");}\n";
+		// SubMenu bg color
+		// $result .= ".lougeact-header .loungeact-navbar-mobile { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), 1)) . ");}\n";
 		
 		if ($this->get_setting ( "header_background_opacity_inside_slider" )) {
 			$result .= ".loungeact-header-inside-banner .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity_inside_slider" ) ) ) . ");}\n";
 			$result .= ".loungeact-fullscreen-banner .lougeact-header .navbar-default { background-color: rgba(" . implode ( ", ", hex2rgba ( $this->get_setting ( "header_background_color" ), $this->get_setting ( "header_background_opacity_inside_slider" ) ) ) . ");}\n";
-			
 		} else {
 			$result .= ".loungeact-header-inside-banner .lougeact-header .navbar-default { background-color: transparent;}";
 			$result .= ".loungeact-fullscreen-banner .lougeact-header .navbar-default { background-color: transparent;}";
@@ -207,9 +211,6 @@ class Lounge_Act_Theme {
 		$result .= $this->generate_css ( ".navbar-default .loungeact-navbar .navbar-nav > li > a:hover", "color", "menu_font_color_hover", '', '', false );
 		$result .= $this->generate_css ( ".navbar-default .navbar-toggle .icon-bar", "background-color", "menu_font_color", '', '', false );
 		$result .= $this->generate_css ( ".navbar-default .navbar-toggle:hover .icon-bar", "background-color", "menu_font_color_hover", '', '', false );
-		
-		
-		
 		
 		$result .= $this->generate_css ( ".site-title a", "color", "site_title_color", '', '', false );
 		$result .= $this->generate_css ( ".site-description", "color", "blogdescription_color", '', '', false );
@@ -268,19 +269,52 @@ class Lounge_Act_Theme {
 		echo $this->get_google_font ();
 		echo $this->custom_css ();
 	}
-	public function get_sidebar_class($col) {
-		$gridsystem_class = 'col-' . $this -> get_setting('gridsystem_class') . '-';
-		if ($col == 'sidebar-left' && ($this->get_setting ( 'page_layout' ) == 'all' || $this->get_setting ( 'page_layout' ) == 'left')) {
-			return $gridsystem_class . $this->get_setting ( 'sidebar_width' );
-		} elseif ($col == 'sidebar-right' && ($this->get_setting ( 'page_layout' ) == 'all' || $this->get_setting ( 'page_layout' ) == 'right')) {
-			return $gridsystem_class . $this->get_setting ( 'sidebar_width' );
+	
+	/**
+	 * Return the correct dynamic_sidebar checking layout choosed and position passed as parameter
+	 *
+	 * @param string $col
+	 *        	Possible value: left, right
+	 *        	
+	 * @return Echo correct dynamic_sidebar
+	 *        
+	 */
+	public function get_sidebar($col) {
+		$gridsystem_class = 'col-' . $this->get_setting ( 'gridsystem_class' ) . '-' . $this->get_setting ( 'sidebar_width' );
+		
+		if ($this->get_setting ( 'page_layout' ) != 'full') {
+			
+			switch ($col) {
+				case 'left' :
+					if (in_array ( $this->get_setting ( 'page_layout' ), [ 
+							'all',
+							'left' 
+					] )) {
+						echo '<div class="' . $gridsystem_class . '">';
+						dynamic_sidebar ( 'sidebar-left' );
+						echo '</div>';
+					}
+					
+					break;
+				case 'right' :
+					if (in_array ( $this->get_setting ( 'page_layout' ), [ 
+							'all',
+							'right' 
+					] )) {
+						echo '<div class="' . $gridsystem_class . '">';
+						dynamic_sidebar ( 'sidebar-right' );
+						echo '</div>';
+					}
+			}
 		}
-		return '';
 	}
+	
+	/**
+	 */
 	public function get_content_class() {
 		$page_layout = $this->get_setting ( 'page_layout' );
 		$sidebar_width = $this->get_setting ( 'sidebar_width' );
-		$gridsystem_class = 'col-' . $this -> get_setting('gridsystem_class') . '-';
+		$gridsystem_class = 'col-' . $this->get_setting ( 'gridsystem_class' ) . '-';
 		
 		switch ($page_layout) {
 			case "left" :
@@ -304,23 +338,22 @@ class Lounge_Act_Theme {
 	 */
 	public function get_page_class() {
 		$classes = array (
-				$this->get_setting ( 'container_class' )
+				$this->get_setting ( 'container_class' ) 
 		);
 		if ($this->get_setting ( 'header_fixed_top' ) != '') {
 			$classes [] = 'loungeact-header-fixed-top';
 		}
 		// If a slider is selected, add class layout
-		if ($this->get_setting ( "slider" ) != '' ) {
-			if (is_home() || is_front_page()) {
+		if ($this->get_setting ( "slider" ) != '') {
+			if (is_home () || is_front_page ()) {
 				$classes [] = $this->get_setting ( 'slider_layout' );
 			} else {
 				// if not in home and slider_only_in_homepage == false, add class
-				if ( ! $this->get_setting ( 'slider_only_in_homepage' ) ) {
+				if (! $this->get_setting ( 'slider_only_in_homepage' )) {
 					$classes [] = $this->get_setting ( 'slider_layout' );
 				}
 			}
 		}
-		
 		
 		return implode ( " ", $classes );
 	}

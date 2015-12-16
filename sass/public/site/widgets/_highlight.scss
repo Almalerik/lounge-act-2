@@ -1,4 +1,18 @@
-.lougeact-highlights-sidebar { 
+.lougeact-highlights-sidebar {
+	
+	.lougeact-highlights-title {
+		position: relative;
+  		text-align: center;
+	}
+	
+	.loungeact-highlight-image {
+	    position: absolute;
+		top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	}
+	
 	h2 {
 		text-transform: uppercase;
     	font-weight: bold;

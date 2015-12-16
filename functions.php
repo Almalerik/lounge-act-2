@@ -136,10 +136,8 @@ function loungeact_widgets_init() {
 			'name' => esc_html__ ( 'Homepage features', 'loungeact' ),
 			'id' => 'homepage-features',
 			'description' => esc_html__ ( 'From the widgets list, select "Loungeact Feature".', 'loungeact' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>' 
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>' 
 	) );
 	register_sidebar ( array (
 			'name' => esc_html__ ( 'Homepage highlights', 'loungeact' ),
@@ -147,8 +145,8 @@ function loungeact_widgets_init() {
 			'description' => esc_html__ ( 'From the widgets list, select "Loungeact Highlights".', 'loungeact' ),
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
-			'before_title' => '<h2 class="widget-title">',
-			'after_title' => '</h2>' 
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>' 
 	) );
 }
 add_action ( 'widgets_init', 'loungeact_widgets_init' );

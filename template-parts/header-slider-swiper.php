@@ -4,7 +4,7 @@ if (! empty ( $slider ) && is_array ( $slider )) : ?>
 <div class="swiper-container loungeact-slider">
 	<div class="swiper-wrapper">
         <?php foreach ( $slider as $slide ): ?>
-        <div class="swiper-slide" style="background: url('<?php echo wp_get_attachment_url( $slide['image_id']); ?>') center;">
+        <div class="swiper-slide" style="background-image: url('<?php echo wp_get_attachment_url( $slide['image_id']); ?>');">
 			<div class="swiper-slide-caption-table">
 				<div class="swiper-slide-caption-table-cell loungeact-slider-overlay">
 					<div class="lougeact-slide-caption">
