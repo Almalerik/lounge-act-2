@@ -56,23 +56,8 @@
 		});
 	});
 
-	// Container wrapper
-	wp.customize('loungeact[container_class]', function(value) {
-		value.bind(function(to) {
-			$('#page').removeClass('container-fluid container').addClass(to).removeAttr('style');
-			if ('container' === to) {
-				var width = wp.customize.value('loungeact[container_max_width]')();
-				$('#page').css('max-width', width);
-			}
-		});
-	});
 
-	// Container wrapper max width
-	wp.customize('loungeact[container_max_width]', function(value) {
-		value.bind(function(to) {
-			$('#page.container').css('max-width', to);
-		});
-	});
+
 	
 	// Header fixed top
 	wp.customize('loungeact[header_fixed_top]', function(value) {

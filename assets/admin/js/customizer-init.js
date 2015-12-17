@@ -13,19 +13,6 @@ jQuery(document).ready(function() {
 
 	// //jQuery(wp.customize.control('alcor_container_class_fixed_max_width').container).css("display","none");
 
-	// Show or hide wrapper container max width
-	if (wp.customize('loungeact[container_class]').get() === 'container-fluid') {
-		wp.customize.control('loungeact_container_max_width').deactivate();
-	} else {
-		wp.customize.control('loungeact_container_max_width').activate();
-	}
-	jQuery('#customize-control-loungeact_container_class input').on('change', function() {
-		if (wp.customize('loungeact[container_class]').get() === 'container-fluid') {
-			wp.customize.control('loungeact_container_max_width').deactivate();
-		} else {
-			wp.customize.control('loungeact_container_max_width').activate();
-		}
-	});
 	
 	// Show or hide slider height
 	/*

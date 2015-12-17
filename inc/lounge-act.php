@@ -16,12 +16,12 @@ class Lounge_Act_Theme {
 	 * @var array
 	 */
 	private $defaults = array (
-			'container_class' => 'container-fluid',
-			'container_max_width' => '1170px',
-			"page_layout" => "full",
+			
+			
+			
 			"gridsystem_class" => "md",
 			'hide_title_in_homepage' => false,
-			'logo' => '',
+
 			'logo_max_height' => '100px',
 			'header_template' => 'default.php',
 			'header_background_color' => '#333333',

@@ -1,5 +1,5 @@
 <?php
-require_once 'wordpress-theme-customizer-custom-controls/layout/layout-picker-custom-control.php';
+
 require_once 'wordpress-theme-customizer-custom-controls/select/google-font-dropdown-custom-control.php';
 require_once 'wordpress-theme-customizer-custom-controls/select/post-dropdown-custom-control.php';
 require_once 'wordpress-theme-customizer-custom-controls/text/fixed-text-custom-control.php';
@@ -27,52 +27,9 @@ function loungeact_customize_register($wp_customize) {
 	/*
 	 * ============== LAYOUT ==============
 	 */
-	$wp_customize->add_section ( 'loungeact_layout', array (
-			'title' => esc_html__ ( 'Layout', 'loungeact' ),
-			'priority' => 10 
-	) );
-	// container_class
-	$wp_customize->add_setting ( 'loungeact[container_class]', array (
-			'default' => $loungeact->get_setting ( 'container_class' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( 'loungeact_container_class', array (
-			'label' => esc_html__ ( 'Container', 'loungeact' ),
-			'section' => 'loungeact_layout',
-			'settings' => 'loungeact[container_class]',
-			'type' => 'radio',
-			'choices' => array (
-					'container-fluid' => esc_html__ ( 'Responsive fluid', 'loungeact' ),
-					'container' => esc_html__ ( 'Responsive fixed', 'loungeact' ) 
-			),
-			'priority' => 10 
-	) );
-	// fixed container max width
-	$wp_customize->add_setting ( 'loungeact[container_max_width]', array (
-			'default' => $loungeact->get_setting ( 'container_max_width' ),
-			'type' => 'option',
-			'sanitize_callback' => 'loungeact_sanitize_css_number' 
-	) );
-	$wp_customize->add_control ( 'loungeact_container_max_width', array (
-			'label' => esc_html__ ( 'Fixed container max width', 'loungeact' ),
-			'description' => esc_html__ ( 'Define also the unit system like px,% ...', 'loungeact' ),
-			'section' => 'loungeact_layout',
-			'settings' => 'loungeact[container_max_width]',
-			'type' => 'text',
-			'active_callback' => 'is_container_not_fluid',
-			'priority' => 20 
-	) );
-	// Page layout
-	$wp_customize->add_setting ( 'loungeact[page_layout]', array (
-			'default' => $loungeact->get_setting ( 'page_layout' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( new Layout_Picker_Custom_Control ( $wp_customize, 'loungeact_page_layout', array (
-			'label' => esc_html__ ( 'Page layout', 'loungeact' ),
-			'section' => 'loungeact_layout',
-			'settings' => 'loungeact[page_layout]',
-			'priority' => 30 
-	) ) );
+	
+
+
 	$wp_customize->add_setting ( 'loungeact[gridsystem_class]', array (
 			'default' => $loungeact->get_setting ( 'gridsystem_class' ),
 			'type' => 'option' 
