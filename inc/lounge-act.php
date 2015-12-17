@@ -53,6 +53,11 @@ class Lounge_Act_Theme {
 			
 			'blog_container_max_width' => '1200px',
 			
+			// Style
+			'color_link' => '#555555',
+			'color_link_visited' => '#555555',
+			'color_link_hover' => '#333333',
+			
 			// TODO: DA VERIFICARE
 			
 			"header_margin_bottom" => "0px",
@@ -161,6 +166,11 @@ class Lounge_Act_Theme {
 		$result = '';
 		$result .= '<!-- Lounge Act Custom CSS -->' . "\n";
 		$result .= '<style type="text/css" id="loungeact-custom-css">' . "\n";
+		
+		// Colors Styles
+		$result .= $this->generate_css ( 'a', 'color', 'color_link', '', '', false );
+		$result .= $this->generate_css ( 'a:visited', 'color', 'color_link_visited', '', '', false );
+		$result .= $this->generate_css ( 'a:hover, a:focus, a:active', 'color', 'color_link_hover', '', '', false );
 		
 		// HEADER
 		// Simulate header height when fixed-top

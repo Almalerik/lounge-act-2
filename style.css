@@ -210,9 +210,6 @@ img {
   max-width: 100%;
   /* Adhere to container width. */ }
 
-a:hover, a:focus {
-  text-decoration: none; }
-
 table {
   margin: 0 0 1.5em;
   width: 100%; }
@@ -261,7 +258,7 @@ input[type="url"],
 input[type="password"],
 input[type="search"],
 textarea {
-  color: #666;
+  color: #666666;
   border: 1px solid #ccc;
   border-radius: 3px; }
   input[type="text"]:focus,
@@ -270,7 +267,7 @@ textarea {
   input[type="password"]:focus,
   input[type="search"]:focus,
   textarea:focus {
-    color: #111; }
+    color: #111111; }
 
 input[type="text"],
 input[type="email"],
@@ -597,7 +594,6 @@ a {
   right: 0;
   bottom: 0; }
 .lougeact-highlights-sidebar h2 {
-  text-transform: uppercase;
   font-weight: bold; }
 .lougeact-highlights-sidebar .vertical-align > [class^="col-"].loungeact-col-left,
 .lougeact-highlights-sidebar .vertical-align > [class*=" col-"].loungeact-col-left {

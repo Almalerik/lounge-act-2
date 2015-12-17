@@ -393,6 +393,42 @@ function loungeact_customize_register($wp_customize) {
 			'settings' => 'loungeact[font_family_h2]',
 			'priority' => 30 
 	) ) );
+	// Colors
+	$wp_customize->add_section ( 'loungeact_colors', array (
+			'title' => esc_html__ ( 'Colors' ),
+			'panel' => 'loungeact_styles',
+			'priority' => 20
+	) );
+	$wp_customize->add_setting ( 'loungeact[color_link]', array (
+			'default' => $loungeact->get_setting ( 'color_link' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_color_link', array (
+			'label' => esc_html__ ( 'Link', 'loungeact' ),
+			'section' => 'loungeact_colors',
+			'settings' => 'loungeact[color_link]',
+			'priority' => 10
+	) ) );
+	$wp_customize->add_setting ( 'loungeact[color_link_visited]', array (
+			'default' => $loungeact->get_setting ( 'color_link_visited' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_color_link_visited', array (
+			'label' => esc_html__ ( 'Visited link', 'loungeact' ),
+			'section' => 'loungeact_colors',
+			'settings' => 'loungeact[color_link_visited]',
+			'priority' => 20
+	) ) );
+	$wp_customize->add_setting ( 'loungeact[color_link_hover]', array (
+			'default' => $loungeact->get_setting ( 'color_link_hover' ),
+			'type' => 'option'
+	) );
+	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_color_link_hover', array (
+			'label' => esc_html__ ( 'Hover link', 'loungeact' ),
+			'section' => 'loungeact_colors',
+			'settings' => 'loungeact[color_link_hover]',
+			'priority' => 30
+	) ) );
 	
 	/*
 	 * ============== Menu ==============
