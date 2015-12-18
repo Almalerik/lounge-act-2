@@ -103,61 +103,9 @@ class Lounge_Act_Theme {
 		}
 	}
 	
-	/**
-	 * This will output the logo url.
-	 */
-	public function get_logo() {
-		$logo = $this->get_setting ( 'logo' );
-		
-		if (isset ( $logo ) && $logo != "") {
-			return $logo;
-		} else {
-			if (file_exists ( get_stylesheet_directory () . "/assets/images/logo.png" )) {
-				return get_stylesheet_directory_uri () . "/assets/images/logo.png";
-			} else {
-				return get_template_directory_uri () . "/assets/images/logo.png";
-			}
-		}
-	}
+
 	
-	/**
-	 * This will generate a line of CSS for use in header output.
-	 * If the setting
-	 * ($mod_name) has no defined value, the CSS will not be output.
-	 *
-	 * @uses get_theme_mod()
-	 * @param string $selector
-	 *        	CSS selector
-	 * @param string $style
-	 *        	The name of the CSS *property* to modify
-	 * @param string $mod_name
-	 *        	The name of the 'theme_mod' option to fetch
-	 * @param string $prefix
-	 *        	Optional. Anything that needs to be output before the CSS property
-	 * @param string $postfix
-	 *        	Optional. Anything that needs to be output after the CSS property
-	 * @param bool $echo
-	 *        	Optional. Whether to print directly to the page (default: TRUE).
-	 * @return string Returns a single line of CSS with selectors and a property.
-	 * @since Lounge_Act_Theme 1.0
-	 */
-	public function generate_css($selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = TRUE) {
-		$return = '';
-		$mod = $this->get_setting ( $mod_name );
-		// If $mod is false and $style contain the word 'color', set color as transparent;
-		if ($mod == '' && strpos ( $style, 'color' ) !== false) {
-			$mod = "transparent";
-		}
-		
-		// The value saved is equal to the default, skip
-		if ($mod != '' && $mod != $this->defaults [$mod_name]) {
-			$return = sprintf ( "%s { %s:%s; }\n", $selector, $style, $prefix . $mod . $postfix );
-			if ($echo) {
-				echo $return;
-			}
-		}
-		return $return;
-	}
+
 	
 	/**
 	 * This will output custom css
