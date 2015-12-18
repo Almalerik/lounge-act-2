@@ -19,7 +19,7 @@ class Lounge_Act_Theme {
 			
 			
 			
-			"gridsystem_class" => "md",
+			
 			'hide_title_in_homepage' => false,
 
 			'logo_max_height' => '100px',

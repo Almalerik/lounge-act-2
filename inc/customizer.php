@@ -23,30 +23,7 @@ function loungeact_customize_register($wp_customize) {
 	$wp_customize->remove_section ( 'header_image' );
 	
 	$loungeact = new Lounge_Act_Theme ();
-	
-	/*
-	 * ============== LAYOUT ==============
-	 */
-	
 
-
-	$wp_customize->add_setting ( 'loungeact[gridsystem_class]', array (
-			'default' => $loungeact->get_setting ( 'gridsystem_class' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( 'loungeact_gridsystem_class', array (
-			'label' => esc_html__ ( 'Columns not collapse in', 'loungeact' ),
-			'section' => 'loungeact_layout',
-			'settings' => 'loungeact[gridsystem_class]',
-			'type' => 'select',
-			'choices' => array (
-					'xs' => esc_html__ ( 'All devices', 'loungeact' ),
-					'sm' => esc_html__ ( 'Small devices ( >= 768px )', 'loungeact' ),
-					'md' => esc_html__ ( 'Medium devices ( >= 992px )', 'loungeact' ),
-					'lg' => esc_html__ ( 'Large devices ( >= 1200px )', 'loungeact' ) 
-			),
-			'priority' => 10 
-	) );
 	/*
 	 * ============== HEADER ==============
 	 */
