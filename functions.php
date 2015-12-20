@@ -162,12 +162,6 @@ require get_template_directory () . '/inc/customizer.php';
 require get_template_directory () . '/inc/jetpack.php';
 
 /**
- * Load Custom Nav
- */
-// TODO: MEGAMENU and submenu
-require get_template_directory () . '/inc/nav/nav.php';
-
-/**
  * Load Slider
  */
 require get_template_directory () . '/inc/post/slider.php';
