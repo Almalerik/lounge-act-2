@@ -90,31 +90,6 @@ if (! function_exists ( 'loungeact_admin_scripts' )) {
 }
 add_action ( 'admin_enqueue_scripts', 'loungeact_admin_scripts' );
 
-// FontAwesome List
-if (! function_exists ( 'get_loungeact_fontawesome_list' )) :
-	function get_loungeact_fontawesome_list() {
-		// check for file in active theme
-		$fa = locate_template ( array (
-				'/inc/fontawesome-icons.php',
-				'/fontawesome-icons.php' 
-		) );
-		
-		// if none found use the default file
-		if ($fa == '')
-			$fa = '/inc/fontawesome-icons.php';
-		
-		include ($fa);
-		
-		return $fa_icon;
-	}
-
-
-
-
-
-
-endif;
-
 // TODO: logo position like layerswp
 
 if (! function_exists ( 'get_loungeact_theme' )) :
