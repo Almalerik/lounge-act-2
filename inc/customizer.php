@@ -52,37 +52,7 @@ function loungeact_customize_register($wp_customize) {
 			'panel' => 'loungeact_header',
 			'priority' => 30 
 	) );
-	// Header background color
-	$wp_customize->add_setting ( 'loungeact[header_background_color]', array (
-			'default' => $loungeact->get_setting ( 'header_background_color' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( new WP_Customize_Color_Control ( $wp_customize, 'loungeact_header_background_color', array (
-			'label' => esc_html__ ( 'Background color', 'loungeact' ),
-			'description' => esc_html__ ( 'This will be applied in all the page and post.', 'loungeact' ),
-			'section' => 'loungeact_header_styles',
-			'settings' => 'loungeact[header_background_color]',
-			'priority' => 10 
-	) ) );
-	// Header background color opacity
-	$wp_customize->add_setting ( 'loungeact[header_background_opacity]', array (
-			'default' => $loungeact->get_setting ( 'header_background_opacity' ),
-			'type' => 'option',
-			 
-	) );
-	$wp_customize->add_control ( 'loungeact_header_background_opacity', array (
-			'label' => esc_html__ ( 'Background opacity', 'loungeact' ),
-			'description' => esc_html__ ( 'Opacity in all page and post and during scroll if header fixed top.', 'loungeact' ),
-			'section' => 'loungeact_header_styles',
-			'settings' => 'loungeact[header_background_opacity]',
-			'type' => 'range',
-			'priority' => 20,
-			'input_attrs' => array (
-					'min' => 0,
-					'max' => 1,
-					'step' => 0.1 
-			) 
-	) );
+
 	// Header background color opacity on scroll
 	$wp_customize->add_setting ( 'loungeact[header_background_opacity_inside_slider]', array (
 			'default' => $loungeact->get_setting ( 'header_background_opacity_inside_slider' ),

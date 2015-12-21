@@ -69,22 +69,6 @@
 	});
     });
 
-    // Header background color
-    wp.customize('loungeact[header_background_color]', function ( value ) {
-	value.bind(function ( to ) {
-	    // console.log(wp.get_setting('loungeact[header_background_opacity]'));
-	    var opacity = wp.customize('loungeact[header_background_opacity]').get();
-	    $('.navbar-default').css('background-color', hexToRgba(to, opacity, true));
-	});
-    });
-
-    // Header background opacity
-    wp.customize('loungeact[header_background_opacity]', function ( value ) {
-	value.bind(function ( to ) {
-	    var bgColor = wp.customize('loungeact[header_background_color]').get();
-	    $('.navbar-default').css('background-color', hexToRgba(bgColor, to, true));
-	});
-    });
 
     // Site title color
     wp.customize('loungeact[site_title_color]', function ( value ) {
@@ -134,29 +118,3 @@
     });
 })(jQuery);
 
-function hexToRgba ( hex, opacity, returnRgba ) {
-
-    opacity = !opacity ? 1 : opacity;
-    var parsing = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    var result = parsing ? {
-	r : parseInt(parsing[1], 16),
-	g : parseInt(parsing[2], 16),
-	b : parseInt(parsing[3], 16),
-	o : opacity
-    } : {
-	r : 0,
-	g : 0,
-	b : 0,
-	o : 0
-    };
-
-    if (returnRgba) {
-	var array_values = new Array();
-	for ( var key in result) {
-	    array_values.push(result[key]);
-	}
-	return 'rgba(' + array_values.join(", ") + ')';
-    } else {
-	return result;
-    }
-}
