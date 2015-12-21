@@ -24,20 +24,10 @@ function loungeact_customize_register($wp_customize) {
 	
 	$loungeact = new Lounge_Act_Theme ();
 
-	/*
-	 * ============== HEADER ==============
-	 */
-	$wp_customize->add_panel ( 'loungeact_header', array (
-			'title' => esc_html__ ( 'Header', 'loungeact' ),
-			'priority' => 20 
-	) );
+
 	
 	/* ============== HEADER OPTIONS ============== */
-	$wp_customize->add_section ( 'loungeact_header_options', array (
-			'title' => esc_html__ ( 'Options', 'loungeact' ),
-			'panel' => 'loungeact_header',
-			'priority' => 10 
-	) );
+
 	// Header fixed top
 	$wp_customize->add_setting ( 'loungeact[header_fixed_top]', array (
 			'default' => $loungeact->get_setting ( 'header_fixed_top' ),
@@ -54,19 +44,7 @@ function loungeact_customize_register($wp_customize) {
 			),
 			'priority' => 10 
 	) );
-	// Header templates
-	$wp_customize->add_setting ( 'loungeact[header_template]', array (
-			'default' => $loungeact->get_setting ( 'header_template' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( 'loungeact_header_template', array (
-			'label' => esc_html__ ( 'Template', 'loungeact' ),
-			'section' => 'loungeact_header_options',
-			'settings' => 'loungeact[header_template]',
-			'type' => 'select',
-			'choices' => loungeact_admin_header_template_list (),
-			'priority' => 30 
-	) );
+
 	
 	// ============== STYLES AND COLORS ==============
 	$wp_customize->add_section ( 'loungeact_header_styles', array (
