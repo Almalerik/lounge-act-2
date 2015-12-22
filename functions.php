@@ -64,25 +64,17 @@ if (! function_exists ( 'loungeact_admin_scripts' )) {
 		
 
 		
-		// Wp Media
-		wp_enqueue_media ();
+
 		wp_enqueue_style ( 'wp-color-picker' );
 		
-		// Wp jQuery UI
-		wp_enqueue_script ( 'jquery-ui-core' );
-		wp_enqueue_script ( 'jquery-ui-accordion' );
+
 		
 		// Theme admin styles and scripts
 		// TODO:REMOVE
 		wp_register_style ( 'loungeact-admin-css', get_template_directory_uri () . '/assets/admin/css/loungeact-admin.css' );
 		wp_enqueue_style ( 'loungeact-admin-css' );
-		wp_register_style ( 'loungeact-admin-style', get_template_directory_uri () . '/assets/admin/css/admin.css' );
-		wp_enqueue_style ( 'loungeact-admin-style' );
-		wp_enqueue_script ( 'loungeact-admin-script', get_template_directory_uri () . '/assets/admin/js/loungeact-admin.js', array (
-				'jquery',
-				'loungeact-select2-script',
-				'wp-color-picker' 
-		) );
+
+
 		wp_localize_script ( 'loungeact-admin-script', 'ajax_object', array (
 				'ajax_url' => admin_url ( 'admin-ajax.php' ) 
 		) );
@@ -136,10 +128,6 @@ require get_template_directory () . '/inc/customizer.php';
  */
 require get_template_directory () . '/inc/jetpack.php';
 
-/**
- * Load Slider
- */
-require get_template_directory () . '/inc/post/slider.php';
 
 /**
  * Load Staff

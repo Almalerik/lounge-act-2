@@ -1,20 +1,7 @@
 jQuery.noConflict()(function($) {
     "use strict";
 
-    $.fn.extend({
-	loungeact_fullscreen_banner : function() {
-		var windowHeight = $(window).height();
-		if ($("#wpadminbar").length > 0) {
-			windowHeight = windowHeight - jQuery("#wpadminbar").outerHeight();
-		}
-	    $(this).css('height', windowHeight);
-	    /*
-	    if ($('.lougeact-header').length > 0){
-	    	$(this).css('top', -$('.lougeact-header').outerHeight());
-	    }*/
-	    	
-	}
-    });
+
 
     $(document).ready(function() {
     	
@@ -47,11 +34,8 @@ jQuery.noConflict()(function($) {
 	//Sticky Header
 	$('.navbar-sticky-top').stick_in_parent({'sticky_class' : 'loungeact-header-sticked', 'parent': $('body')});
 	
-	$('.loungeact-fullscreen-banner .loungeact-banner').loungeact_fullscreen_banner();
+	
 
-	$(window).resize(function() {
-	    $('.loungeact-fullscreen-banner .loungeact-banner').loungeact_fullscreen_banner();
-	});
 
 	// Responsive submenu open
 	

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'wordpress-theme-customizer-custom-controls/select/google-font-dropdown-custom-control.php';
-require_once 'wordpress-theme-customizer-custom-controls/select/post-dropdown-custom-control.php';
+
 require_once 'wordpress-theme-customizer-custom-controls/text/fixed-text-custom-control.php';
 /**
  * Lounge Act Theme Customizer.
@@ -140,40 +140,7 @@ function loungeact_customize_register($wp_customize) {
 			'title' => esc_html__ ( 'Slider', 'loungeact' ),
 			'priority' => 30 
 	) );
-	// Helper
-	$wp_customize->add_control ( new Fixed_Text_Custom_Control ( $wp_customize, 'loungeact_slider_helper', array (
-			'description' => __ ( 'To create or edit a slider, save and go <a href="' . admin_url ( 'edit.php?post_type=loungeact_slide' ) . '">here</a>.', 'loungeact' ),
-			'section' => 'loungeact_slider',
-			'priority' => 10 
-	) ) );
-	// select slider
-	$wp_customize->add_setting ( 'loungeact[slider]', array (
-			'default' => $loungeact->get_setting ( 'slider' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( new Post_Dropdown_Custom_Control ( $wp_customize, 'loungeact_slider', array (
-			'label' => esc_html__ ( 'Slider', 'loungeact' ),
-			'section' => 'loungeact_slider',
-			'settings' => 'loungeact[slider]',
-			'priority' => 20,
-			'active_callback' => 'loungeact_slider_exist' 
-	), array (
-			'post_type' => 'loungeact_slide' 
-	) ) );
-	// slider height
-	$wp_customize->add_setting ( 'loungeact[slider_height]', array (
-			'default' => $loungeact->get_setting ( 'slider_height' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( 'loungeact_slider_height', array (
-			'label' => esc_html__ ( 'Slider height', 'loungeact' ),
-			'description' => esc_html__ ( 'Define also the unit system like px,% ...', 'loungeact' ),
-			'section' => 'loungeact_slider',
-			'settings' => 'loungeact[slider_height]',
-			'type' => 'text',
-			'priority' => 30,
-			'active_callback' => 'is_loungeact_slider_not_fullscreen' 
-	) );
+
 	// slide opacity
 	$wp_customize->add_setting ( 'loungeact[slide_overlay_opacity]', array (
 			'default' => $loungeact->get_setting ( 'slide_overlay_opacity' ),
@@ -192,24 +159,7 @@ function loungeact_customize_register($wp_customize) {
 			),
 			'active_callback' => 'loungeact_slider_selected' 
 	) );
-	// slide layout
-	$wp_customize->add_setting ( 'loungeact[slider_layout]', array (
-			'default' => $loungeact->get_setting ( 'slider_layout' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( 'loungeact_slider_layout', array (
-			'label' => esc_html__ ( 'Slider layout', 'loungeact' ),
-			'section' => 'loungeact_slider',
-			'settings' => 'loungeact[slider_layout]',
-			'type' => 'select',
-			'choices' => array (
-					'' => esc_html__ ( 'Normal', 'loungeact' ),
-					'loungeact-fullscreen-banner' => esc_html__ ( 'FullScreen', 'loungeact' ),
-					'loungeact-header-inside-banner' => esc_html__ ( 'Header inside', 'loungeact' ) 
-			),
-			'priority' => 50,
-			'active_callback' => 'loungeact_slider_selected' 
-	) );
+
 	// slide only in home
 	$wp_customize->add_setting ( 'loungeact[slider_only_in_homepage]', array (
 			'default' => $loungeact->get_setting ( 'slider_only_in_homepage' ),
@@ -460,45 +410,8 @@ function loungeact_sanitize_css_number($value) {
 	return $value;
 }
 
-/**
- * A function that check if a slider exist
- *
- * @return boolean
- */
-function loungeact_slider_exist() {
-	$posts_array = get_posts ( array (
-			'post_type' => 'loungeact_slide' 
-	) );
-	if (count ( $posts_array ) > 0) {
-		return true;
-	} else {
-		return false;
-	}
-}
-function loungeact_slider_selected($control) {
-	if ($control->manager->get_setting ( 'loungeact[slider]' )->value () != '') {
-		return true;
-	} else {
-		return false;
-	}
-}
 
-/**
- * Check if slider fullscreen is not active
- *
- * @return boolean
- */
-function is_loungeact_slider_not_fullscreen($control) {
-	if (loungeact_slider_selected ( $control )) {
-		if ($control->manager->get_setting ( 'loungeact[slider_layout]' )->value () == 'loungeact-fullscreen-banner') {
-			return false;
-		} else {
-			return true;
-		}
-	} else {
-		return false;
-	}
-}
+
 
 /**
  * Check if slider fullscreen is not active
