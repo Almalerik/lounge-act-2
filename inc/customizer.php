@@ -24,27 +24,6 @@ function loungeact_customize_register($wp_customize) {
 	
 	$loungeact = new Lounge_Act_Theme ();
 
-
-	
-	/* ============== HEADER OPTIONS ============== */
-
-	// Header fixed top
-	$wp_customize->add_setting ( 'loungeact[header_fixed_top]', array (
-			'default' => $loungeact->get_setting ( 'header_fixed_top' ),
-			'type' => 'option' 
-	) );
-	$wp_customize->add_control ( 'loungeact_header_fixed_top', array (
-			'label' => esc_html__ ( 'Position', 'loungeact' ),
-			'section' => 'loungeact_header_options',
-			'settings' => 'loungeact[header_fixed_top]',
-			'type' => 'select',
-			'choices' => array (
-					'' => esc_html__ ( 'Top', 'loungeact' ),
-					'navbar-sticky-top' => esc_html__ ( 'Fixed top', 'loungeact' ) 
-			),
-			'priority' => 10 
-	) );
-
 	
 	// ============== STYLES AND COLORS ==============
 	$wp_customize->add_section ( 'loungeact_header_styles', array (
