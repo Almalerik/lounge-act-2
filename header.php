@@ -31,7 +31,7 @@ $loungeact = get_loungeact_theme ();
 		<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'lounge-act' ); ?></a>
 		
 		<div class="row lougeact-header <?php echo $loungeact -> get_setting("header_fixed_top");?>">
-			<?php include(locate_template('template-parts/header/'. $loungeact -> get_setting("header_template")));?>
+			
 		</div>
 		
 		<?php if ($loungeact->get_setting ( 'slider' ) != "") : ?>
