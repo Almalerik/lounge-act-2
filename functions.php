@@ -134,10 +134,7 @@ require get_template_directory () . '/inc/jetpack.php';
  */
 require get_template_directory () . '/inc/post/staff.php';
 
-/**
- * Load Feature Widget
- */
-require get_template_directory () . '/inc/widget/feature-widget.php';
+
 
 /**
  * Load Highlight Widget
@@ -161,24 +158,6 @@ function hide_meta_lock($hidden, $screen) {
 		// removed 'postexcerpt',
 	return $hidden;
 }
-function wpse_footer_db_queries() {
-	echo '<h2> ' . get_num_queries () . ' queries in ' . timer_stop ( 0 ) . ' seconds. </h2>' . PHP_EOL;
-	
-	global $wpdb;
-	
-	$list = '';
-	if (! empty ( $wpdb->queries )) {
-		$queries = array ();
-		foreach ( $wpdb->queries as $query ) {
-			$queries [] = sprintf ( '<li><pre>%1$s</pre>Time: %2$s sec<pre>%3$s</pre></li>', nl2br ( esc_html ( $query [0] ) ), number_format ( sprintf ( '%0.1f', $query [1] * 1000 ), 1, '.', ',' ), esc_html ( implode ( "\n", explode ( ', ', $query [2] ) ) ) );
-		}
-		
-		$list = '<ol>' . implode ( '', $queries ) . '</ol>';
-	}
-	printf ( '<style>pre{white-space:pre-wrap !important}</style>
-        <div class="%1$s"><p><b>%2$s Queries</b></p>%3$s</div>', __FUNCTION__, $wpdb->num_queries, $list );
-}
-// add_action ( 'wp_footer', 'wpse_footer_db_queries' );
 
 
 /*
