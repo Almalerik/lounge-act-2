@@ -141,23 +141,6 @@ require get_template_directory () . '/inc/post/staff.php';
  */
 require get_template_directory () . '/inc/widget/highlight-widget.php';
 
-// Change what's hidden by default for loungeact_staff
-add_filter ( 'default_hidden_meta_boxes', 'hide_meta_lock', 10, 2 );
-function hide_meta_lock($hidden, $screen) {
-	if ('loungeact_staff' == $screen->post_type)
-		$hidden = array (
-				'postexcerpt',
-				'slugdiv',
-				'postcustom',
-				'trackbacksdiv',
-				'commentstatusdiv',
-				'commentsdiv',
-				'authordiv',
-				'revisionsdiv' 
-		);
-		// removed 'postexcerpt',
-	return $hidden;
-}
 
 
 /*
